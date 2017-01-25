@@ -7,9 +7,9 @@ A system which allows event organisers to manage bookings for a particular serie
 ## User Stories
 
 ```
-~~As an admin~~
-~~So I can start managing bookings for events~~
-~~I want to log in~~
+As an admin
+So I can start managing bookings for events
+I want to log in
 
 As an admin
 So I can spread the word about a particular event
