@@ -163,6 +163,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\EventDbContext\201701251611164_Initial.cs" />
+    <Compile Include="Migrations\EventDbContext\201701251611164_Initial.Designer.cs">
+      <DependentUpon>201701251611164_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\EventDbContext\Configuration.cs" />
+    <Compile Include="Migrations\InvitationDbContext\201701251616158_Initial.cs" />
+    <Compile Include="Migrations\InvitationDbContext\201701251616158_Initial.Designer.cs">
+      <DependentUpon>201701251616158_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\InvitationDbContext\Configuration.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Invitation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,6 +239,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\EventDbContext\201701251611164_Initial.resx">
+      <DependentUpon>201701251611164_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\InvitationDbContext\201701251616158_Initial.resx">
+      <DependentUpon>201701251616158_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
