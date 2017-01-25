@@ -51,3 +51,7 @@ c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.csprojResolveAssemblyReference.cache
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.dll
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.pdb
+c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.dll
+c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.SqlServer.dll
+c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.xml
+c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.SqlServer.xml
