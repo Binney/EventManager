@@ -58,3 +58,4 @@ c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin
 C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.EventDbContext.Initial.resources
 C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache
 C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.InvitationDbContext.Initial.resources
+C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.InvitationDbContext.AddedValidations.resources

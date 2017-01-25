@@ -52,8 +52,19 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Email,InvitationCode")] Invitation invitation)
         {
-            if (ModelState.IsValid)
+            if (db.Invitations.Any(i => i.Email == invitation.Email))
             {
+                ModelState.AddModelError("Email", "This email has already been sent an invitation");
+            }
+
+            if (db.Invitations.Any(i => i.InvitationCode == invitation.InvitationCode))
+            {
+                ModelState.AddModelError("InvitationCode", "This code already exists");
+            }
+
+            if (ModelState.IsValid )
+            {
+
                 db.Invitations.Add(invitation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
