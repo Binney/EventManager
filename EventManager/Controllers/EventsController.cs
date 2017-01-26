@@ -7,12 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EventManager.Filters;
 using EventManager.Models;
 using EventManager.Services;
 
 namespace EventManager.Controllers
 {
     [RoutePrefix("admin/events")]
+    [AdminOnlyFilter]
     public class EventsController : Controller
     {
         private EventDbContext db = new EventDbContext();
@@ -30,7 +32,7 @@ namespace EventManager.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            return AdminCheck(db.Events.OrderBy(events => events.Date).ToList());
+            return View(db.Events.OrderBy(events => events.Date).ToList());
         }
 
         // GET: Events/Details/5

@@ -14,16 +14,22 @@ namespace EventManager
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
 
+//            routes.MapRoute(
+//                name: "Users",
+//                url: "{action}/{id}",
+//                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+//            );
+//
+//            routes.MapRoute(
+//                name: "Admin",
+//                url: "Admin/{controller}/{action}",
+//                defaults: new { controller = "Admin", action = "Index" }
+//            );
+//            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Admin",
-                url: "Admin/{controller}/{action}",
-                defaults: new {controller = "Admin", action = "Index"}
             );
         }
     }
