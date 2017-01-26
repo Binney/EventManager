@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,7 @@ namespace EventManager.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            return View(db.Events.OrderBy(events => events.Date).ToList());
         }
 
         // GET: Events/Details/5
