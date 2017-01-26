@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,8 @@ namespace EventManager.Services
     {
         public static bool IsAdmin()
         {
-            return HttpContext.Current.Request.Cookies["Auth"]?.Value == "fdkwjfkldf";
+            return HttpContext.Current.Request.Cookies["Auth"]?.Value == ConfigurationManager.AppSettings["AdminPassword"];
         }
+
     }
 }

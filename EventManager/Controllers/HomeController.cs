@@ -12,10 +12,6 @@ namespace EventManager.Controllers
     {
         public ActionResult Index()
         {
-            //ConfigurationManager.AppSettings["AdminPassword"];
-            //Response.SetCookie();
-            //Response.Cookies.Add(new HttpCookie("Auth", "4398ghjk28932hjfkd892h3j"));
-            //Debug.Write(Response.Cookies["Auth"]);
             return View();
         }
 

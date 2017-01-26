@@ -5,3 +5,11 @@
 }
 
 <h2>This is the Admin view</h2>
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+   <input type="text" placeholder="Username" name="adminUsername"/>
+   <input type="password" placeholder="Password" name="adminPassword" />
+   <input type="submit" value="Login" />
+}
