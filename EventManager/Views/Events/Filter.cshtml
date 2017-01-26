@@ -1,20 +1,5 @@
-﻿@model IEnumerable<EventManager.Models.Event>
+﻿@model System.Collections.Generic.IEnumerable<EventManager.Models.Event>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<div class="btn-group btn-toggle">
-    <button class="btn btn-xs btn-primary active" value="upcoming">Upcoming</button>
-    <button class="btn btn-xs btn-default" value="previous">Previous</button>
-</div>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div id="events">
     <table class="table">
         <tr>
             <th>
@@ -48,6 +33,5 @@
                 </td>
             </tr>
         }
-
     </table>
-</div>
+    

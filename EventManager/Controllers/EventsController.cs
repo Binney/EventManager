@@ -39,6 +39,27 @@ namespace EventManager.Controllers
             return View(@event);
         }
 
+        [Route("filter")]
+        public ActionResult Filter(string type)
+        {
+            IEnumerable<Event> events;
+
+            switch (type)
+            {
+                case "upcoming":
+                    events = db.Events.Where(e => e.Date >= DateTime.Now);
+                    break;
+                case "previous":
+                    events = db.Events.Where(e => e.Date < DateTime.Now);
+                    break;
+                default:
+                    events = db.Events;
+                    break;
+            }
+
+            return PartialView(events.OrderBy(e => e.Date));
+        }
+
         // GET: Events/Create
         [Route("new")]
         public ActionResult Create()

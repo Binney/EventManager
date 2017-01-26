@@ -1,11 +1,21 @@
-﻿$(".btn-toggle").click(function () {
-    $(this).find(".btn").toggleClass("active");
-
-    $(this).find(".btn").toggleClass("btn-default");
-
+﻿$("button").click(function () {
+    $.ajax({
+        url: "events/filter?type=" + this.value,
+        dataType: "html",
+        success: function (data) {
+            $("#events").children(".table").remove();
+            $("#events").append(data);
+        }
+    });
 });
 
-$("form").submit(function () {
-    alert($(this["options"]).val());
-    return false;
+$(".btn-toggle").click(function () {
+    $(this).find(".btn").toggleClass("active");
+
+    console.log($(this).find(".btn-primary"));
+    if ($(this).find(".btn-primary").size() > 0) {
+        $(this).find(".btn").toggleClass("btn-primary");
+    }
+
+    $(this).find(".btn").toggleClass("btn-default");
 });
