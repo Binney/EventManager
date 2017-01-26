@@ -4,12 +4,24 @@
     ViewBag.Title = "title";
 }
 
-<h2>This is the Admin view</h2>
+<h2>Admin Login</h2>
 
 @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-   <input type="text" placeholder="Username" name="adminUsername"/>
-   <input type="password" placeholder="Password" name="adminPassword" />
-   <input type="submit" value="Login" />
-}
+    <div class="form-horizontal">
+        <div class="form-group">
+            <input type="text" placeholder="Username" name="adminUsername" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input type="password" placeholder="Password" name="adminPassword" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-default" />
+        </div>
+    </div>
+
+        }
