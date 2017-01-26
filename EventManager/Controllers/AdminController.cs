@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EventManager.Services;
 
 namespace EventManager.Controllers
 {
@@ -12,6 +13,7 @@ namespace EventManager.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            
             //ConfigurationManager.AppSettings["AdminPassword"];
             //Response.SetCookie();
             //Response.Cookies.Add(new HttpCookie("Auth", "4398ghjk28932hjfkd892h3j"));

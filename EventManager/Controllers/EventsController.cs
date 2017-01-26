@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EventManager.Models;
+using EventManager.Services;
 
 namespace EventManager.Controllers
 {
@@ -16,11 +17,20 @@ namespace EventManager.Controllers
     {
         private EventDbContext db = new EventDbContext();
 
+        private ActionResult AdminCheck(object events)
+        {
+            if (UserService.IsAdmin())
+            {
+                return View(events);
+            }
+            return Redirect("/admin"); ;
+        }
+        
         // GET: Events
         [Route("")]
         public ActionResult Index()
         {
-            return View(db.Events.OrderBy(events => events.Date).ToList());
+            return AdminCheck(db.Events.OrderBy(events => events.Date).ToList());
         }
 
         // GET: Events/Details/5
@@ -64,7 +74,7 @@ namespace EventManager.Controllers
         [Route("new")]
         public ActionResult Create()
         {
-            return View();
+            return AdminCheck(null);
         }
 
         // POST: Events/Create
@@ -81,8 +91,7 @@ namespace EventManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(@event);
+            return AdminCheck(@event);
         }
 
         // GET: Events/Edit/5
