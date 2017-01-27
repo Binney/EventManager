@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
+using EventManager.Filters;
 
 namespace EventManager.Controllers
 {
+    
     public class HomeController : Controller
     {
         private EventDbContext _eventDb = new EventDbContext();
@@ -19,6 +21,7 @@ namespace EventManager.Controllers
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(string userEmail, string invitationCode)
@@ -32,6 +35,7 @@ namespace EventManager.Controllers
             return RedirectToAction("Index");
         }
 
+        [InvitedUserOnlyFilter]
         public ActionResult Upcoming()
         {
             return View(_eventDb.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));

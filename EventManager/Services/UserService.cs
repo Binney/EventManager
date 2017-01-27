@@ -13,5 +13,9 @@ namespace EventManager.Services
             return HttpContext.Current.Request.Cookies["Auth"]?.Value == ConfigurationManager.AppSettings["AdminPassword"];
         }
 
+        public static bool IsInvitedUser()
+        {
+            return !(string.IsNullOrEmpty(HttpContext.Current.Request.Cookies["Code"]?.Value));
+        }
     }
 }
