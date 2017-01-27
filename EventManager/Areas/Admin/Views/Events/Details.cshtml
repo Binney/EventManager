@@ -1,4 +1,4 @@
-﻿@model EventManager.Models.Invitation
+﻿@model EventManager.Areas.Admin.Models.Event
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Invitation</h4>
+    <h4>Event</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,19 +19,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.InvitationCode)
+            @Html.DisplayNameFor(model => model.Time)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InvitationCode)
+            @Html.DisplayFor(model => model.Time)
         </dd>
 
     </dl>

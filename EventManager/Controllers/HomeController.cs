@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EventManager.Models;
+using EventManager.Areas.Admin.Models;
 
 namespace EventManager.Controllers
 {
