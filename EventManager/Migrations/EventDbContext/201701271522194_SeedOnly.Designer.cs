@@ -7,13 +7,13 @@ namespace EventManager.Migrations.EventDbContext
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddPrimaryKey : IMigrationMetadata
+    public sealed partial class SeedOnly : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPrimaryKey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedOnly));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701271223565_AddPrimaryKey"; }
+            get { return "201701271522194_SeedOnly"; }
         }
         
         string IMigrationMetadata.Source

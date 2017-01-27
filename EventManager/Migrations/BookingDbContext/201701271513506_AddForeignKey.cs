@@ -3,7 +3,7 @@ namespace EventManager.Migrations.BookingDbContext
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialBookingCreation : DbMigration
+    public partial class AddForeignKey : DbMigration
     {
         public override void Up()
         {
@@ -11,14 +11,14 @@ namespace EventManager.Migrations.BookingDbContext
                 "dbo.Bookings",
                 c => new
                     {
-                        BookingId = c.Int(nullable: false),
+                        EventId = c.Int(nullable: false),
                         Guest1 = c.String(nullable: false),
                         Guest2 = c.String(nullable: false),
                         Guest3 = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.BookingId)
-                .ForeignKey("dbo.Events", t => t.BookingId)
-                .Index(t => t.BookingId);
+                .PrimaryKey(t => t.EventId)
+                .ForeignKey("dbo.Events", t => t.EventId)
+                .Index(t => t.EventId);
             
             CreateTable(
                 "dbo.Events",
@@ -35,8 +35,8 @@ namespace EventManager.Migrations.BookingDbContext
         
         public override void Down()
         {
-            DropForeignKey("dbo.Bookings", "BookingId", "dbo.Events");
-            DropIndex("dbo.Bookings", new[] { "BookingId" });
+            DropForeignKey("dbo.Bookings", "EventId", "dbo.Events");
+            DropIndex("dbo.Bookings", new[] { "EventId" });
             DropTable("dbo.Events");
             DropTable("dbo.Bookings");
         }

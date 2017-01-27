@@ -37,9 +37,10 @@ namespace EventManager.Controllers
         }
 
         // GET: Bookings/Create
-        public ActionResult Create()
+        public ActionResult New()
         {
-            ViewBag.BookingId = new SelectList(db.Events, "EventId", "Name");
+            var events = db.Events.Where(m => m.Booking.EventId != m.EventId);
+            ViewBag.EventId = new SelectList(events, "EventId", "Name");
             return View();
         }
 
@@ -48,16 +49,20 @@ namespace EventManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId,Guest1,Guest2,Guest3")] Booking booking)
+        public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
-            if (ModelState.IsValid)
+            var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
+            if (!(bookings.Any()))
             {
-                db.Bookings.Add(booking);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Bookings.Add(booking);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
-            ViewBag.BookingId = new SelectList(db.Events, "EventId", "Name", booking.BookingId);
+            
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
             return View(booking);
         }
 
@@ -73,7 +78,7 @@ namespace EventManager.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BookingId = new SelectList(db.Events, "EventId", "Name", booking.BookingId);
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
             return View(booking);
         }
 
@@ -82,7 +87,7 @@ namespace EventManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookingId,Guest1,Guest2,Guest3")] Booking booking)
+        public ActionResult Edit([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +95,7 @@ namespace EventManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BookingId = new SelectList(db.Events, "EventId", "Name", booking.BookingId);
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
             return View(booking);
         }
 

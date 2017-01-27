@@ -7,13 +7,13 @@ namespace EventManager.Migrations.BookingDbContext
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialBookingCreation : IMigrationMetadata
+    public sealed partial class ChangeDisplayNameOfEvents : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialBookingCreation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeDisplayNameOfEvents));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701271220524_InitialBookingCreation"; }
+            get { return "201701271537526_ChangeDisplayNameOfEvents"; }
         }
         
         string IMigrationMetadata.Source

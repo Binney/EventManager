@@ -12,8 +12,10 @@ namespace EventManager.Models
 {
     public class Booking
     {
+        [Key]
         [ForeignKey("Event")]
-        public int BookingId { get; set; }
+        [Display(Name = "Event")]
+        public int EventId { get; set; }
         [Required, DataType(DataType.EmailAddress)]
         [Display(Name = "First Guest")]
         public string Guest1 { get; set; }

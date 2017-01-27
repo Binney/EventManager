@@ -167,18 +167,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\BookingDbContext\201701271220524_InitialBookingCreation.cs" />
-    <Compile Include="Migrations\BookingDbContext\201701271220524_InitialBookingCreation.Designer.cs">
-      <DependentUpon>201701271220524_InitialBookingCreation.cs</DependentUpon>
+    <Compile Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.cs" />
+    <Compile Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.Designer.cs">
+      <DependentUpon>201701271513506_AddForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.cs" />
+    <Compile Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.Designer.cs">
+      <DependentUpon>201701271537526_ChangeDisplayNameOfEvents.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\BookingDbContext\Configuration.cs" />
-    <Compile Include="Migrations\EventDbContext\201701251611164_Initial.cs" />
-    <Compile Include="Migrations\EventDbContext\201701251611164_Initial.Designer.cs">
-      <DependentUpon>201701251611164_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\EventDbContext\201701271223565_AddPrimaryKey.cs" />
-    <Compile Include="Migrations\EventDbContext\201701271223565_AddPrimaryKey.Designer.cs">
-      <DependentUpon>201701271223565_AddPrimaryKey.cs</DependentUpon>
+    <Compile Include="Migrations\EventDbContext\201701271522194_SeedOnly.cs" />
+    <Compile Include="Migrations\EventDbContext\201701271522194_SeedOnly.Designer.cs">
+      <DependentUpon>201701271522194_SeedOnly.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EventDbContext\Configuration.cs" />
     <Compile Include="Migrations\InvitationDbContext\201701251616158_Initial.cs" />
@@ -252,7 +252,7 @@
     <Content Include="Areas\Admin\Views\Invitations\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Events\Filter.cshtml" />
     <Content Include="Views\Home\Upcoming.cshtml" />
-    <Content Include="Views\Bookings\Create.cshtml" />
+    <Content Include="Views\Bookings\New.cshtml" />
     <Content Include="Views\Bookings\Delete.cshtml" />
     <Content Include="Views\Bookings\Details.cshtml" />
     <Content Include="Views\Bookings\Edit.cshtml" />
@@ -271,14 +271,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\BookingDbContext\201701271220524_InitialBookingCreation.resx">
-      <DependentUpon>201701271220524_InitialBookingCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.resx">
+      <DependentUpon>201701271513506_AddForeignKey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\EventDbContext\201701251611164_Initial.resx">
-      <DependentUpon>201701251611164_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.resx">
+      <DependentUpon>201701271537526_ChangeDisplayNameOfEvents.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\EventDbContext\201701271223565_AddPrimaryKey.resx">
-      <DependentUpon>201701271223565_AddPrimaryKey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\EventDbContext\201701271522194_SeedOnly.resx">
+      <DependentUpon>201701271522194_SeedOnly.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\InvitationDbContext\201701251616158_Initial.resx">
       <DependentUpon>201701251616158_Initial.cs</DependentUpon>
