@@ -1,35 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using EventManager.Models;
+using EventManager.Areas.Admin.Models;
+using EventManager.Filters;
 using EventManager.Services;
 
-namespace EventManager.Controllers
+namespace EventManager.Areas.Admin.Controllers
 {
-    [RoutePrefix("admin/invitations")]
+    [AdminOnlyFilter]
     public class InvitationsController : Controller
     {
         private InvitationDbContext db = new InvitationDbContext();
 
-        private ActionResult AdminCheck(object events)
-        {
-            if (UserService.IsAdmin())
-            {
-                return View(events);
-            }
-            return Redirect("/admin"); ;
-        }
-
         // GET: Invitations
-        [Route("")]
+
         public ActionResult Index()
         {
-            return AdminCheck(db.Invitations.ToList());
+            return View(db.Invitations.ToList());
         }
 
         // GET: Invitations/Details/5
@@ -48,19 +36,17 @@ namespace EventManager.Controllers
         }
 
         // GET: Invitations/Create
-        [Route("new")]
-        public ActionResult Create()
+        public ActionResult New()
         {
-            return AdminCheck(null);
+            return View();
         }
 
         // POST: Invitations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Route("new")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Email,InvitationCode")] Invitation invitation)
+        public ActionResult New([Bind(Include = "ID,Name,Email,InvitationCode")] Invitation invitation)
         {
             if (db.Invitations.Any(i => i.Email == invitation.Email))
             {
@@ -80,7 +66,7 @@ namespace EventManager.Controllers
                 return RedirectToAction("Index");
             }
 
-            return AdminCheck(invitation);
+            return View(invitation);
         }
 
         // GET: Invitations/Edit/5

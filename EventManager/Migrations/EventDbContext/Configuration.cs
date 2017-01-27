@@ -1,4 +1,4 @@
-using EventManager.Models;
+using EventManager.Areas.Admin.Models;
 
 namespace EventManager.Migrations.EventDbContext
 {
@@ -7,7 +7,7 @@ namespace EventManager.Migrations.EventDbContext
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EventManager.Models.EventDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Areas.Admin.Models.EventDbContext>
     {
         public Configuration()
         {
@@ -15,7 +15,7 @@ namespace EventManager.Migrations.EventDbContext
             MigrationsDirectory = @"Migrations\EventDbContext";
         }
 
-        protected override void Seed(EventManager.Models.EventDbContext context)
+        protected override void Seed(Areas.Admin.Models.EventDbContext context)
         {
           context.Events.AddOrUpdate(i => i.Name,
               new Event

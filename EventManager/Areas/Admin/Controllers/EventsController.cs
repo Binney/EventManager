@@ -1,36 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using EventManager.Models;
+using EventManager.Areas.Admin.Models;
+using EventManager.Filters;
 using EventManager.Services;
 
-namespace EventManager.Controllers
+namespace EventManager.Areas.Admin.Controllers
 {
-    [RoutePrefix("admin/events")]
+    [AdminOnlyFilter]
     public class EventsController : Controller
     {
         private EventDbContext db = new EventDbContext();
-
-        private ActionResult AdminCheck(object events)
-        {
-            if (UserService.IsAdmin())
-            {
-                return View(events);
-            }
-            return Redirect("/admin"); ;
-        }
-        
         // GET: Events
-        [Route("")]
         public ActionResult Index()
         {
-            return AdminCheck(db.Events.OrderBy(events => events.Date).ToList());
+            return View(db.Events.OrderBy(events => events.Date).ToList());
         }
 
         // GET: Events/Details/5
@@ -49,7 +36,6 @@ namespace EventManager.Controllers
             return View(@event);
         }
 
-        [Route("filter")]
         public ActionResult Filter(string type)
         {
             IEnumerable<Event> events;
@@ -70,20 +56,18 @@ namespace EventManager.Controllers
             return PartialView(events.OrderBy(e => e.Date));
         }
 
-        // GET: Events/Create
-        [Route("new")]
-        public ActionResult Create()
+        // GET: Events/New
+        public ActionResult New()
         {
-            return AdminCheck(null);
+            return View();
         }
 
-        // POST: Events/Create
+        // POST: Events/New
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Route("new")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Date,Time")] Event @event)
+        public ActionResult New([Bind(Include = "ID,Name,Date,Time")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +75,7 @@ namespace EventManager.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return AdminCheck(@event);
+            return View(@event);
         }
 
         // GET: Events/Edit/5

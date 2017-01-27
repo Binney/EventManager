@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
-namespace EventManager.Models
+namespace EventManager.Areas.Admin.Models
 {
     public class Invitation
     {

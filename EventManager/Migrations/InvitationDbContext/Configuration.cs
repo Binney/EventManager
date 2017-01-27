@@ -5,7 +5,7 @@ namespace EventManager.Migrations.InvitationDbContext
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EventManager.Models.InvitationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Areas.Admin.Models.InvitationDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace EventManager.Migrations.InvitationDbContext
             MigrationsDirectory = @"Migrations\InvitationDbContext";
         }
 
-        protected override void Seed(EventManager.Models.InvitationDbContext context)
+        protected override void Seed(Areas.Admin.Models.InvitationDbContext context)
         {
         }
     }

@@ -15,15 +15,15 @@ namespace EventManager
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "User",
+                url: "{action}/{id}",
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
             );
 
             routes.MapRoute(
-                name: "Admin",
-                url: "Admin/{controller}/{action}",
-                defaults: new {controller = "Admin", action = "Index"}
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

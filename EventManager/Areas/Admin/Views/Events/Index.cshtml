@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EventManager.Models.Event>
+﻿@model IEnumerable<EventManager.Areas.Admin.Models.Event>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "New")
 </p>
 <div id="events">
     <table class="table">
