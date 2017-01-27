@@ -17,9 +17,4 @@ namespace EventManager.Areas.Admin.Models
         public virtual Booking Booking { get; set; }
     }
 
-    public class EventDbContext : DbContext
-    {
-        public DbSet<Event> Events { get; set; }
-    }
-
 }

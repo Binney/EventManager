@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
+using EventManager.DbContexts;
 using EventManager.Filters;
 
 namespace EventManager.Controllers
@@ -13,8 +14,7 @@ namespace EventManager.Controllers
     
     public class HomeController : Controller
     {
-        private EventDbContext _eventDb = new EventDbContext();
-        private InvitationDbContext _invitationDb = new InvitationDbContext();
+        private EventManagerDbContext db = new EventManagerDbContext();
 
         public ActionResult Index()
         {
@@ -26,7 +26,7 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string userEmail, string invitationCode)
         {
-            var invitation = _invitationDb.Invitations.Where(i => i.Email == userEmail);
+            var invitation = db.Invitations.Where(i => i.Email == userEmail);
             if (invitation.Any() && invitation.First().InvitationCode == invitationCode )
             {
                 Response.Cookies.Add(new HttpCookie("Code", invitationCode));
@@ -38,7 +38,7 @@ namespace EventManager.Controllers
         [InvitedUserOnlyFilter]
         public ActionResult Upcoming()
         {
-            return View(_eventDb.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
+            return View(db.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
         }
 
      

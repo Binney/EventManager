@@ -1,137 +1,127 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
-using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
-using EventManager.Filters;
-using EventManager.Services;
+using EventManager.Models;
 
-namespace EventManager.Areas.Admin.Controllers
+namespace EventManager.Controllers
 {
-    [AdminOnlyFilter]
-    public class EventsController : Controller
+    public class BookingsController : Controller
     {
         private EventManagerDbContext db = new EventManagerDbContext();
-        // GET: Events
+
+        // GET: Bookings
         public ActionResult Index()
         {
-            return View(db.Events.OrderBy(events => events.Date).ToList());
+            var bookings = db.Bookings.Include(b => b.Event);
+            return View(bookings.ToList());
         }
 
-        // GET: Events/Details/5
-
+        // GET: Bookings/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Booking booking = db.Bookings.Find(id);
+            if (booking == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(booking);
         }
 
-        public ActionResult Filter(string type)
-        {
-            IEnumerable<Event> events;
-
-            switch (type)
-            {
-                case "upcoming":
-                    events = db.Events.Where(e => e.Date >= DateTime.Now);
-                    break;
-                case "previous":
-                    events = db.Events.Where(e => e.Date < DateTime.Now);
-                    break;
-                default:
-                    events = db.Events;
-                    break;
-            }
-
-            return PartialView(events.OrderBy(e => e.Date));
-        }
-
-        // GET: Events/New
+        // GET: Bookings/Create
         public ActionResult New()
         {
+            var events = db.Events.Where(m => m.Booking.EventId != m.EventId);
+            ViewBag.EventId = new SelectList(events, "EventId", "Name");
             return View();
         }
 
-        // POST: Events/New
+        // POST: Bookings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult New([Bind(Include = "ID,Name,Date,Time")] Event @event)
+        public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
-            if (ModelState.IsValid)
+            var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
+            if (!(bookings.Any()))
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Bookings.Add(booking);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            return View(@event);
+            
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+            return View(booking);
         }
 
-        // GET: Events/Edit/5
+        // GET: Bookings/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Booking booking = db.Bookings.Find(id);
+            if (booking == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+            return View(booking);
         }
 
-        // POST: Events/Edit/5
+        // POST: Bookings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Date,Time")] Event @event)
+        public ActionResult Edit([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
+                db.Entry(booking).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(@event);
+            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+            return View(booking);
         }
 
-        // GET: Events/Delete/5
+        // GET: Bookings/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Booking booking = db.Bookings.Find(id);
+            if (booking == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(booking);
         }
 
-        // POST: Events/Delete/5
+        // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
+            Booking booking = db.Bookings.Find(id);
+            db.Bookings.Remove(booking);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

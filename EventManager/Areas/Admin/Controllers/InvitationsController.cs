@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
+using EventManager.DbContexts;
 using EventManager.Filters;
 using EventManager.Services;
 
@@ -11,7 +12,7 @@ namespace EventManager.Areas.Admin.Controllers
     [AdminOnlyFilter]
     public class InvitationsController : Controller
     {
-        private InvitationDbContext db = new InvitationDbContext();
+        private EventManagerDbContext db = new EventManagerDbContext();
 
         // GET: Invitations
 
