@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EventManager.DbContexts;
 using EventManager.Models;
 
 namespace EventManager.Controllers
 {
     public class BookingsController : Controller
     {
-        private BookingDbContext db = new BookingDbContext();
+        private EventManagerDbContext db = new EventManagerDbContext();
 
         // GET: Bookings
         public ActionResult Index()

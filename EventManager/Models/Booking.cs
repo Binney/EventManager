@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -29,10 +30,5 @@ namespace EventManager.Models
         public virtual Event Event { get; set; }
     }
 
-    public class BookingDbContext : DbContext
-    {
-        public DbSet<Booking> Bookings { get; set; }
-
-        public System.Data.Entity.DbSet<EventManager.Areas.Admin.Models.Event> Events { get; set; }
-    }
+    
 }

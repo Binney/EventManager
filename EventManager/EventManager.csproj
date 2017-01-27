@@ -159,6 +159,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
+    <Compile Include="DbContexts\EventManagerDbContext.cs" />
     <Compile Include="Filters\AdminOnlyFilterAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -167,31 +168,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.cs" />
-    <Compile Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.Designer.cs">
-      <DependentUpon>201701271513506_AddForeignKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.cs" />
-    <Compile Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.Designer.cs">
-      <DependentUpon>201701271537526_ChangeDisplayNameOfEvents.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\BookingDbContext\Configuration.cs" />
-    <Compile Include="Migrations\EventDbContext\201701271522194_SeedOnly.cs" />
-    <Compile Include="Migrations\EventDbContext\201701271522194_SeedOnly.Designer.cs">
-      <DependentUpon>201701271522194_SeedOnly.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\EventDbContext\Configuration.cs" />
-    <Compile Include="Migrations\InvitationDbContext\201701251616158_Initial.cs" />
-    <Compile Include="Migrations\InvitationDbContext\201701251616158_Initial.Designer.cs">
-      <DependentUpon>201701251616158_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\InvitationDbContext\201701251728567_Added Validations.cs" />
-    <Compile Include="Migrations\InvitationDbContext\201701251728567_Added Validations.Designer.cs">
-      <DependentUpon>201701251728567_Added Validations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\InvitationDbContext\Configuration.cs" />
     <Compile Include="Areas\Admin\Models\Event.cs" />
     <Compile Include="Areas\Admin\Models\Invitation.cs" />
+    <Compile Include="Migrations\201701271712381_Initial.cs" />
+    <Compile Include="Migrations\201701271712381_Initial.Designer.cs">
+      <DependentUpon>201701271712381_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -271,20 +254,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\BookingDbContext\201701271513506_AddForeignKey.resx">
-      <DependentUpon>201701271513506_AddForeignKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\BookingDbContext\201701271537526_ChangeDisplayNameOfEvents.resx">
-      <DependentUpon>201701271537526_ChangeDisplayNameOfEvents.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\EventDbContext\201701271522194_SeedOnly.resx">
-      <DependentUpon>201701271522194_SeedOnly.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\InvitationDbContext\201701251616158_Initial.resx">
-      <DependentUpon>201701251616158_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\InvitationDbContext\201701251728567_Added Validations.resx">
-      <DependentUpon>201701251728567_Added Validations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701271712381_Initial.resx">
+      <DependentUpon>201701271712381_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

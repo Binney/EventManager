@@ -55,9 +55,6 @@ c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.SqlServer.dll
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.xml
 c:\users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\bin\EntityFramework.SqlServer.xml
-C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache
-C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.InvitationDbContext.Initial.resources
-C:\Users\ash\Documents\Visual Studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.InvitationDbContext.AddedValidations.resources
 C:\Users\feh\Documents\Projects\softwire_events_app\EventManager\EventManager\bin\ApplicationInsights.config
 C:\Users\feh\Documents\Projects\softwire_events_app\EventManager\EventManager\bin\roslyn\csc.exe
 C:\Users\feh\Documents\Projects\softwire_events_app\EventManager\EventManager\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -182,6 +179,5 @@ C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.pdb
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.BookingDbContext.InitialBookingCreation.resources
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.EventDbContext.AddPrimaryKey.resources
-C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.BookingDbContext.AddForeignKey.resources
-C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.EventDbContext.SeedOnly.resources
-C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.BookingDbContext.ChangeDisplayNameOfEvents.resources
+C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.Initial.resources
+C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache

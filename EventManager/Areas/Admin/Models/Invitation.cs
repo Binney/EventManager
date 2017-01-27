@@ -14,9 +14,4 @@ namespace EventManager.Areas.Admin.Models
         [RegularExpression(@"^[A-Z0-9]*$", ErrorMessage = "Please use only uppercase letters and numbers")]
         public string InvitationCode { get; set; }
     }
-
-    public class InvitationDbContext : DbContext
-    {
-        public DbSet<Invitation> Invitations { get; set; }
-    }
 }
