@@ -23,11 +23,14 @@ namespace EventManager.Models
         [Required, DataType(DataType.EmailAddress)]
         [Display(Name = "Third Guest")]
         public string Guest3 { get; set; }
+
         public virtual Event Event { get; set; }
     }
 
     public class BookingDbContext : DbContext
     {
         public DbSet<Booking> Bookings { get; set; }
+
+        public System.Data.Entity.DbSet<EventManager.Areas.Admin.Models.Event> Events { get; set; }
     }
 }

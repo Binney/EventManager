@@ -181,3 +181,5 @@ C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.dll
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.pdb
+C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.BookingDbContext.InitialBookingCreation.resources
+C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.EventDbContext.AddPrimaryKey.resources
