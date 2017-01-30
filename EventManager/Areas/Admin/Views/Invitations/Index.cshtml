@@ -20,7 +20,10 @@
         <th>
             @Html.DisplayNameFor(model => model.InvitationCode)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -33,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InvitationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

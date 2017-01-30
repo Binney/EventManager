@@ -181,3 +181,4 @@ C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.EventDbContext.AddPrimaryKey.resources
 C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.Initial.resources
 C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache
+C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.AddActiveFieldToInvitations.resources
