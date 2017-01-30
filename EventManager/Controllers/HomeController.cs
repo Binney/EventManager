@@ -38,7 +38,6 @@ namespace EventManager.Controllers
         [InvitedUserOnlyFilter]
         public ActionResult Upcoming()
         {
-            ViewBag.Bookings = db.Bookings.ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
         }
 

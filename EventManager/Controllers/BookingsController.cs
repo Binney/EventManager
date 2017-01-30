@@ -58,10 +58,27 @@ namespace EventManager.Controllers
         public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
             var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
-     
+            var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
+
             if (bookings.Any())
             {
-                ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+                ViewBag.EventId = new SelectList(events, "EventId", "Name");
+                return View(booking);
+            }
+
+            var guest1 =
+                db.Bookings.Where(
+                    b => b.Guest1 == booking.Guest1 || b.Guest1 == booking.Guest2 || b.Guest1 == booking.Guest3);
+            var guest2 =
+                db.Bookings.Where(
+                    b => b.Guest2 == booking.Guest1 || b.Guest2 == booking.Guest2 || b.Guest2 == booking.Guest3);
+            var guest3 =
+                db.Bookings.Where(
+                    b => b.Guest3 == booking.Guest1 || b.Guest3 == booking.Guest2 || b.Guest3 == booking.Guest3);
+
+            if (guest1.Any() || guest2.Any() || guest3.Any())
+            {
+                ViewBag.EventId = new SelectList(events, "EventId", "Name");
                 return View(booking);
             }
 
