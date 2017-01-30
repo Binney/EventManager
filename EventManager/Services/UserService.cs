@@ -15,7 +15,7 @@ namespace EventManager.Services
 
         public static bool IsInvitedUser()
         {
-            return !(string.IsNullOrEmpty(HttpContext.Current.Request.Cookies["Code"]?.Value));
+            return !(string.IsNullOrEmpty(HttpContext.Current.Request.Cookies["UserEmail"]?.Value));
         }
     }
 }

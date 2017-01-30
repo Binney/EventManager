@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
+using EventManager.Models;
 
 namespace EventManager.Controllers
 {
@@ -18,6 +19,12 @@ namespace EventManager.Controllers
 
         public ActionResult Index()
         {
+            if (Response.Cookies != null)
+            {
+                string email = Request.Cookies["UserEmail"]?.Value;
+                Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);
+                return RedirectToAction("Details", "Bookings", new { id = booking.EventId });
+            }
             return View();
         }
 
@@ -27,9 +34,14 @@ namespace EventManager.Controllers
         public ActionResult Index(string userEmail, string invitationCode)
         {
             var invitation = db.Invitations.Where(i => i.Email == userEmail);
-            if (invitation.Any() && invitation.First().InvitationCode == invitationCode )
+            if (invitation.Any() && invitation.First().InvitationCode == invitationCode)
             {
-                Response.Cookies.Add(new HttpCookie("Code", invitationCode));
+                Response.Cookies.Add(new HttpCookie("UserEmail", userEmail));
+                if (db.Bookings.Any(b => b.Guest1 == userEmail || b.Guest2 == userEmail || b.Guest3 == userEmail))
+                {
+                    Booking booking = db.Bookings.First(b => b.Guest1 == userEmail || b.Guest2 == userEmail || b.Guest3 == userEmail);
+                    return RedirectToAction("Details", "Bookings", new {id = booking.EventId});
+                }
                 return RedirectToAction("Upcoming");
             }
             return RedirectToAction("Index");
@@ -42,6 +54,6 @@ namespace EventManager.Controllers
             return View(db.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
         }
 
-     
+       
     }
 }

@@ -59,26 +59,12 @@ namespace EventManager.Controllers
         {
             var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
             var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
+            ViewBag.EventId = new SelectList(events, "EventId", "Name");
 
-            if (bookings.Any())
+            if (bookings.Any() || BookingService.CheckForPreviousBookings(db, booking))
             {
-                ViewBag.EventId = new SelectList(events, "EventId", "Name");
                 return View(booking);
             }
-
-            string[] emails = {booking.Guest1, booking.Guest2, booking.Guest3};
-
-            var guests =
-                db.Bookings.Where(
-                    b => emails.Contains(b.Guest1) || emails.Contains(b.Guest2) || emails.Contains(b.Guest3));
-       
-
-            if (guests.Any())
-            {
-                ViewBag.EventId = new SelectList(events, "EventId", "Name");
-                return View(booking);
-            }
-
 
             if (ModelState.IsValid)
             {
