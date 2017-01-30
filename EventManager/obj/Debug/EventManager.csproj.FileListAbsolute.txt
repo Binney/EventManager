@@ -179,3 +179,4 @@ C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj
 C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.AddActiveFieldToInvitations.resources
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.Initial.resources
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.AddActiveFieldToInvitations.resources
+C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.CascadingDeletion.resources

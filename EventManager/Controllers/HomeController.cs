@@ -22,8 +22,15 @@ namespace EventManager.Controllers
             if (Request.Cookies["UserEmail"] != null)
             {
                 string email = Request.Cookies["UserEmail"]?.Value;
-                Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);
-                return RedirectToAction("Details", "Bookings", new { id = booking.EventId });
+                if (db.Bookings.Any(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email))
+                {
+                    Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);
+                    return RedirectToAction("Details", "Bookings", new { id = booking.EventId });
+                }
+                else
+                {
+                    return RedirectToAction("Upcoming");
+                } 
             }
             return View();
         }

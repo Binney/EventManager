@@ -13,6 +13,18 @@ namespace EventManager.DbContexts
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Invitation> Invitations { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Booking>()
+                        .HasRequired(t => t.Event)
+                        .WithOptional(e => e.Booking)
+                        .WillCascadeOnDelete();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
+    
 }
 

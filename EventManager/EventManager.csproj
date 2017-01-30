@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201701300954135_AddActiveFieldToInvitations.Designer.cs">
       <DependentUpon>201701300954135_AddActiveFieldToInvitations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701301601428_CascadingDeletion.cs" />
+    <Compile Include="Migrations\201701301601428_CascadingDeletion.Designer.cs">
+      <DependentUpon>201701301601428_CascadingDeletion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701300954135_AddActiveFieldToInvitations.resx">
       <DependentUpon>201701300954135_AddActiveFieldToInvitations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701301601428_CascadingDeletion.resx">
+      <DependentUpon>201701301601428_CascadingDeletion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

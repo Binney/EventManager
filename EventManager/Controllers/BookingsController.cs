@@ -71,7 +71,7 @@ namespace EventManager.Controllers
                 BookingService.DisableInvitation(db, booking);
                 db.Bookings.Add(booking);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new {id = booking.EventId});
             }
             return View(booking);
         }
