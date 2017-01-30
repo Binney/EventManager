@@ -17,13 +17,15 @@ namespace EventManager.Models
         [ForeignKey("Event")]
         [Display(Name = "Event")]
         public int EventId { get; set; }
-        [Required, DataType(DataType.EmailAddress)]
+//        [, DataType(DataType.EmailAddress)]
+        
+        [Required, RegularExpression(@"^([\w\.\-]+)@softwire.com$", ErrorMessage = "Please use a softwire email address")]
         [Display(Name = "First Guest")]
         public string Guest1 { get; set; }
-        [Required, DataType(DataType.EmailAddress)]
+        [Required, RegularExpression(@"^([\w\.\-]+)@softwire.com$", ErrorMessage = "Please use a softwire email address")]
         [Display(Name = "Second Guest")]
         public string Guest2 { get; set; }
-        [Required, DataType(DataType.EmailAddress)]
+        [Required, RegularExpression(@"^([\w\.\-]+)@softwire.com$", ErrorMessage = "Please use a softwire email address")]
         [Display(Name = "Third Guest")]
         public string Guest3 { get; set; }
 
