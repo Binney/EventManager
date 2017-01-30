@@ -66,17 +66,14 @@ namespace EventManager.Controllers
                 return View(booking);
             }
 
-            var guest1 =
-                db.Bookings.Where(
-                    b => b.Guest1 == booking.Guest1 || b.Guest1 == booking.Guest2 || b.Guest1 == booking.Guest3);
-            var guest2 =
-                db.Bookings.Where(
-                    b => b.Guest2 == booking.Guest1 || b.Guest2 == booking.Guest2 || b.Guest2 == booking.Guest3);
-            var guest3 =
-                db.Bookings.Where(
-                    b => b.Guest3 == booking.Guest1 || b.Guest3 == booking.Guest2 || b.Guest3 == booking.Guest3);
+            string[] emails = {booking.Guest1, booking.Guest2, booking.Guest3};
 
-            if (guest1.Any() || guest2.Any() || guest3.Any())
+            var guests =
+                db.Bookings.Where(
+                    b => emails.Contains(b.Guest1) || emails.Contains(b.Guest2) || emails.Contains(b.Guest3));
+       
+
+            if (guests.Any())
             {
                 ViewBag.EventId = new SelectList(events, "EventId", "Name");
                 return View(booking);

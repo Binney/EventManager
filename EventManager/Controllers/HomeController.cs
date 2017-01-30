@@ -38,6 +38,7 @@ namespace EventManager.Controllers
         [InvitedUserOnlyFilter]
         public ActionResult Upcoming()
         {
+            ViewBag.UnbookedEvents = db.Events.Where(e => e.Booking == null).ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
         }
 
