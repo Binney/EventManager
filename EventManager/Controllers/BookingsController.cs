@@ -6,8 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Models;
+using WebGrease.Css.Extensions;
 
 namespace EventManager.Controllers
 {
@@ -53,17 +55,30 @@ namespace EventManager.Controllers
         public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
             var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
-            if (!(bookings.Any()))
+     
+            if (bookings.Any())
             {
-                if (ModelState.IsValid)
-                {
-                    db.Bookings.Add(booking);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+                return View(booking);
             }
-            
-            ViewBag.EventId = new SelectList(db.Events, "EventId", "Name", booking.EventId);
+
+
+            if (ModelState.IsValid)
+            {
+                var usedInvitations = db.Invitations.Where(i => i.Email == booking.Guest1 || i.Email == booking.Guest2 || i.Email == booking.Guest3);
+
+                if (usedInvitations.Any())
+                {
+                    foreach (Invitation invitation in usedInvitations)
+                    {
+                        invitation.Active = false;
+                    }
+                }
+
+                db.Bookings.Add(booking);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View(booking);
         }
 
