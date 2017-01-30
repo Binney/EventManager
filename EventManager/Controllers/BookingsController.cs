@@ -130,6 +130,7 @@ namespace EventManager.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Booking booking = db.Bookings.Find(id);
+            BookingService.EnableInvitation(db, booking);
             db.Bookings.Remove(booking);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -19,7 +19,7 @@ namespace EventManager.Controllers
 
         public ActionResult Index()
         {
-            if (Response.Cookies != null)
+            if (Request.Cookies["UserEmail"] != null)
             {
                 string email = Request.Cookies["UserEmail"]?.Value;
                 Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);

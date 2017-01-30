@@ -25,6 +25,19 @@ namespace EventManager.Services
             }
         }
 
+        public static void EnableInvitation(EventManagerDbContext db, Booking booking)
+        {
+            var reactivatedInvitations = db.Invitations.Where(i => i.Email == booking.Guest1 || i.Email == booking.Guest2 || i.Email == booking.Guest3);
+
+            if (reactivatedInvitations.Any())
+            {
+                foreach (Invitation invitation in reactivatedInvitations)
+                {
+                    invitation.Active = true;
+                }
+            }
+        }
+
 
         public static bool CheckForPreviousBookings(EventManagerDbContext db, Booking booking)
         {
