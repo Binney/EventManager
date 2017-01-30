@@ -8,11 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
+using EventManager.Filters;
 using EventManager.Models;
+using EventManager.Services;
 using WebGrease.Css.Extensions;
 
 namespace EventManager.Controllers
 {
+    [InvitedUserOnlyFilter]
     public class BookingsController : Controller
     {
         private EventManagerDbContext db = new EventManagerDbContext();
@@ -42,7 +45,7 @@ namespace EventManager.Controllers
         // GET: Bookings/Create
         public ActionResult New()
         {
-            var events = db.Events.Where(m => m.Booking.EventId != m.EventId);
+            var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
             return View();
         }
@@ -65,16 +68,7 @@ namespace EventManager.Controllers
 
             if (ModelState.IsValid)
             {
-                var usedInvitations = db.Invitations.Where(i => i.Email == booking.Guest1 || i.Email == booking.Guest2 || i.Email == booking.Guest3);
-
-                if (usedInvitations.Any())
-                {
-                    foreach (Invitation invitation in usedInvitations)
-                    {
-                        invitation.Active = false;
-                    }
-                }
-
+                BookingService.DisableInvitation(db, booking);
                 db.Bookings.Add(booking);
                 db.SaveChanges();
                 return RedirectToAction("Index");
