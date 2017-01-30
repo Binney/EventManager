@@ -117,22 +117,29 @@ namespace EventManager.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Booking booking = db.Bookings.Find(id);
-            if (booking == null)
+            
+            
+            if (BookingService.IsBookedIn(booking))
             {
-                return HttpNotFound();
+                return View(booking);
             }
-            return View(booking);
+            return RedirectToAction("Index", "Home");
         }
 
+        
         // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Booking booking = db.Bookings.Find(id);
-            BookingService.EnableInvitation(db, booking);
-            db.Bookings.Remove(booking);
-            db.SaveChanges();
+
+            if (BookingService.IsBookedIn(booking))
+            {
+                BookingService.EnableInvitation(db, booking);
+                db.Bookings.Remove(booking);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

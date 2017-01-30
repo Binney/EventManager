@@ -44,5 +44,14 @@ namespace EventManager.Services
             string[] emails = { booking.Guest1, booking.Guest2, booking.Guest3 };
             return db.Bookings.Any(b => emails.Contains(b.Guest1) || emails.Contains(b.Guest2) || emails.Contains(b.Guest3));
         }
+
+        public static bool IsBookedIn(Booking booking)
+        {
+            string email = HttpContext.Current.Request.Cookies["UserEmail"]?.Value;
+            string[] bookingEmails = { booking?.Guest1, booking?.Guest2, booking?.Guest3 };
+
+            return (bookingEmails.Contains(email) && booking != null);
+        }
+
     }
 }
