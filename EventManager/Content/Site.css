@@ -30,3 +30,8 @@ textarea {
 .form-control {
     margin: auto;
 }
+
+.toggler {
+    left: 2%;
+    margin-bottom: 10px;
+}

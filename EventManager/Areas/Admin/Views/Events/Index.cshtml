@@ -4,16 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<div class="btn-group btn-toggle">
-    <button class="btn btn-xs btn-primary active" value="upcoming">Upcoming</button>
-    <button class="btn btn-xs btn-default" value="previous">Previous</button>
+<h2 class="centered">Events</h2>
+<div>
+    <div class="col-md-5"></div>
+    <div class="btn-group btn-toggle col-md-2 toggler">
+        <button class="btn btn-xs btn-primary active" value="upcoming">Upcoming</button>
+        <button class="btn btn-xs btn-default" value="previous">Previous</button>
+    </div>
+    <div class="col-md-5"></div>
+  
 </div>
-<p>@Html.ActionLink("Invitations", "Index", "Invitations")</p>
-<p>
-    @Html.ActionLink("Create New", "New")
-</p>
+
+
 <div id="events">
     <table class="table">
         <tr>
@@ -25,6 +27,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                Guests
             </th>
             <th></th>
         </tr>
@@ -42,12 +47,16 @@
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+                    @Html.DisplayFor(modelItem => item.Booking.Guest1)<br/>
+                    @Html.DisplayFor(modelItem => item.Booking.Guest2)<br/>
+                    @Html.DisplayFor(modelItem => item.Booking.Guest3)<br/>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
 
     </table>
+    <div class="centered">@Html.ActionLink("Create New", "New", null, new { @class = "btn btn-default"})</div>
 </div>

@@ -250,8 +250,6 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Events\New.cshtml" />
     <Content Include="Areas\Admin\Views\Events\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Invitations\New.cshtml" />
     <Content Include="Areas\Admin\Views\Invitations\Delete.cshtml" />
