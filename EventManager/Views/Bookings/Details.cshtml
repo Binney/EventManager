@@ -7,9 +7,9 @@
 <h2 class="centered">@Html.DisplayFor(model => model.Event.Name)</h2>
 
 <div>
-    <hr />
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
+        <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Guest1)
@@ -35,10 +35,9 @@
                 @Html.DisplayFor(model => model.Guest3)
             </dd>
         </dl>
-     
+
         <div class="centered">
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" }) |
-            @Html.ActionLink("Cancel", "Delete", new { id = Model.EventId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Cancel", "Delete", new {id = Model.EventId}, new {@class = "btn btn-danger"})
         </div>
     </div>
     <div class="col-lg-4">   
