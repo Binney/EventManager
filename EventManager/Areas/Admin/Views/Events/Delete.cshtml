@@ -4,45 +4,49 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2 class="centered">Delete Event</h2>
 <div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <hr/>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
 
-    </dl>
+        </dl>
+        <div class="centered">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <p>Are you sure you want to cancel this event?</p>
+                    <input type="submit" value="Yes" class="btn btn-danger"/> |
+                    @Html.ActionLink("No", "Index", null, new { @class = "btn btn-success" })
+                </div>
+            }
         </div>
-    }
+    </div>
+    <div class="col-lg-4"></div>
 </div>
