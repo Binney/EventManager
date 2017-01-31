@@ -18,6 +18,7 @@ namespace EventManager.Areas.Admin.Controllers
         // GET: Events
         public ActionResult Index()
         {
+            ViewBag.BookedEvents = db.Events.Where(e => e.Booking != null).ToList();
             return View(db.Events.OrderBy(events => events.Date).ToList());
         }
 
@@ -40,6 +41,7 @@ namespace EventManager.Areas.Admin.Controllers
         public ActionResult Filter(string type)
         {
             IEnumerable<Event> events;
+            ViewBag.BookedEvents = db.Events.Where(e => e.Booking != null).ToList();
 
             switch (type)
             {

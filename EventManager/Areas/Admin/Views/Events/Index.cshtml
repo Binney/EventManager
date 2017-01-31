@@ -1,10 +1,12 @@
-﻿@model IEnumerable<EventManager.Areas.Admin.Models.Event>
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<EventManager.Areas.Admin.Models.Event>
 
 @{
     ViewBag.Title = "Index";
 }
-
 <h2 class="centered">Events</h2>
+
+
 <div>
     <div class="col-md-5"></div>
     <div class="btn-group btn-toggle col-md-2 toggler">
@@ -14,6 +16,7 @@
     <div class="col-md-5"></div>
   
 </div>
+
 
 
 <div id="events">
@@ -47,16 +50,24 @@
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Booking.Guest1)<br/>
-                    @Html.DisplayFor(modelItem => item.Booking.Guest2)<br/>
-                    @Html.DisplayFor(modelItem => item.Booking.Guest3)<br/>
+                    @if (ViewBag.BookedEvents.Contains(item))
+                    {
+                        @Html.DisplayFor(modelItem => item.Booking.Guest1)<br/>
+                        @Html.DisplayFor(modelItem => item.Booking.Guest2)<br/>
+                        @Html.DisplayFor(modelItem => item.Booking.Guest3)<br/>
+                    }
+                    else
+                    {
+                        <p>Unbooked</p>
+                    }
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Delete Event", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
-
     </table>
-    <div class="centered">@Html.ActionLink("Create New", "New", null, new { @class = "btn btn-default"})</div>
+    
 </div>
+
+<div class="centered">@Html.ActionLink("Create New", "New", null, new { @class = "btn btn-default" })</div>
