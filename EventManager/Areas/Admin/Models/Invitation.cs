@@ -17,6 +17,7 @@ namespace EventManager.Areas.Admin.Models
         public string Email { get; set; }
         [Required, StringLength(12, MinimumLength = 12, ErrorMessage = "Code must be 12 characters long")] 
         [RegularExpression(@"^[A-Z0-9]*$", ErrorMessage = "Please use only uppercase letters and numbers")]
+        [Display(Name = "Invitation Code")]
         public string InvitationCode { get; set; }
         public bool Active { get; set; }
     }

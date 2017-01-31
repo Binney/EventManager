@@ -36,3 +36,11 @@ textarea {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.text-danger {
+    color: #FFE4CD
+}
+
+li {
+    list-style-type: none;
+}
