@@ -1,4 +1,5 @@
 ﻿@using EventManager.Models
+@using EventManager.Services
 @model IEnumerable<EventManager.Areas.Admin.Models.Event> 
 
     @{
@@ -33,16 +34,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
-                @*                Ask about hiding the Book link if there is already a book*@
                 <td>
-                    @if (ViewBag.UnbookedEvents.Contains(item))
+                    @if (ViewBag.UnbookedEvents.Contains(item) && ViewBag.NotAlreadyBookedIn)
                     {
                         @Html.ActionLink("Book", "New", "Bookings", null, new { @class = "btn btn-default"} )
                     }
                 </td>
             </tr>
         }
-
     </table>
 
 

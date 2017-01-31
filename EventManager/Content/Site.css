@@ -26,3 +26,7 @@ textarea {
 .btn-secondary {
     background-color: white;
 }
+
+.form-control {
+    margin: auto;
+}

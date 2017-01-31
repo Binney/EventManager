@@ -9,6 +9,7 @@ using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
 using EventManager.Models;
+using EventManager.Services;
 
 namespace EventManager.Controllers
 {
@@ -59,6 +60,8 @@ namespace EventManager.Controllers
         [InvitedUserOnlyFilter]
         public ActionResult Upcoming()
         {
+            var userEmail = Request.Cookies["UserEmail"]?.Value;
+            ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.Guest1 ==  userEmail|| b.Guest2 == userEmail|| b.Guest3 == userEmail));
             ViewBag.UnbookedEvents = db.Events.Where(e => e.Booking == null).ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now ).OrderBy(e => e.Date));
         }
