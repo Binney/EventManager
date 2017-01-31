@@ -191,8 +191,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -202,7 +206,18 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="fonts\fontawesome-webfont-.eot" />
+    <Content Include="fonts\fontawesome-webfont-v=3.2.1.eot" />
+    <Content Include="fonts\fontawesome-webfont-v=3.2.1.ttf" />
+    <Content Include="fonts\fontawesome-webfont-v=3.2.1.woff" />
+    <Content Include="font\.DS_Store" />
+    <Content Include="font\fontawesome-webfont-.eot" />
+    <Content Include="font\fontawesome-webfont-v=3.2.1.eot" />
+    <Content Include="font\fontawesome-webfont-v=3.2.1.ttf" />
+    <Content Include="font\fontawesome-webfont-v=3.2.1.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -210,9 +225,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smoothscroll.js" />
     <Content Include="Scripts\toggle.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

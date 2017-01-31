@@ -45,7 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
-    @Html.ActionLink("Cancel", "Delete", new { id = Model.EventId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cancel", "Delete", new { id = Model.EventId }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning"})
 </p>
