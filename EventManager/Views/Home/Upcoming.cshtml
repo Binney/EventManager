@@ -37,7 +37,7 @@
                 <td>
                     @if (ViewBag.UnbookedEvents.Contains(item))
                     {
-                        @Html.ActionLink("Book", "New", "Bookings")
+                        @Html.ActionLink("Book", "New", "Bookings", null, new { @class = "btn btn-default"} )
                     }
                 </td>
             </tr>
