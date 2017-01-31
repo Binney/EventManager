@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
+using EventManager.Models;
 using EventManager.Services;
 
 namespace EventManager.Areas.Admin.Controllers
@@ -133,6 +135,8 @@ namespace EventManager.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = db.Events.Find(id);
+            //            Booking booking = db.Bookings.First(b => b.EventId == id); 
+            BookingService.EnableInvitation(db, @event.Booking);
             db.Events.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");
