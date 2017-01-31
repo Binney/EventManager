@@ -57,13 +57,23 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
-            var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
+//            var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
             var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
 
-            if (bookings.Any() || BookingService.CheckForPreviousBookings(db, booking))
+
+            //Look to refactor into own method.
+            if (BookingService.CheckForPreviousBookings(db, booking.Guest1))
             {
-                return View(booking);
+                ModelState.AddModelError("Guest1", "This email is already booking into another event.");
+            }
+            if (BookingService.CheckForPreviousBookings(db, booking.Guest2))
+            {
+                ModelState.AddModelError("Guest2", "This email is already booking into another event.");
+            }
+            if (BookingService.CheckForPreviousBookings(db, booking.Guest3))
+            {
+                ModelState.AddModelError("Guest3", "This email is already booking into another event.");                  
             }
 
             if (ModelState.IsValid)

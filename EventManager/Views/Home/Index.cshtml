@@ -9,6 +9,7 @@
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     <div class="form-horizontal">
         <div class="form-group">
             <input type="email" placeholder="Email" name="userEmail" class="form-control" />

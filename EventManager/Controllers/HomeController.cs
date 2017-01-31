@@ -51,7 +51,9 @@ namespace EventManager.Controllers
                 }
                 return RedirectToAction("Upcoming");
             }
-            return RedirectToAction("Index");
+
+            ModelState.AddModelError("", "Email or Invitation Code are incorrect.");
+            return View();
         }
 
         [InvitedUserOnlyFilter]

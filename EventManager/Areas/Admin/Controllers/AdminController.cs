@@ -27,7 +27,8 @@ namespace EventManager.Areas.Admin.Controllers
                 Response.Cookies.Add(new HttpCookie("Auth", adminPassword));
                 return Redirect("/admin/events");
             }
-            return RedirectToAction("Index");
+            ModelState.AddModelError("", "Username or password are incorrect." );
+            return View();
         }
     }
 }

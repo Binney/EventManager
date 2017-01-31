@@ -38,11 +38,9 @@ namespace EventManager.Services
             }
         }
 
-
-        public static bool CheckForPreviousBookings(EventManagerDbContext db, Booking booking)
+        public static bool CheckForPreviousBookings(EventManagerDbContext db, string guest)
         {
-            string[] emails = { booking.Guest1, booking.Guest2, booking.Guest3 };
-            return db.Bookings.Any(b => emails.Contains(b.Guest1) || emails.Contains(b.Guest2) || emails.Contains(b.Guest3));
+            return db.Bookings.Any(b => b.Guest1 == guest || b.Guest2 == guest || b.Guest3 == guest);
         }
 
         public static bool IsBookedIn(Booking booking)
