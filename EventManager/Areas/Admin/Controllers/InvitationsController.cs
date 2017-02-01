@@ -61,7 +61,7 @@ namespace EventManager.Areas.Admin.Controllers
 
             if (ModelState.IsValid )
             {
-
+                EmailService.InvitationEmail(invitation.Email, invitation.Name, invitation.InvitationCode).Wait();
                 db.Invitations.Add(invitation);
                 db.SaveChanges();
                 return RedirectToAction("Index");

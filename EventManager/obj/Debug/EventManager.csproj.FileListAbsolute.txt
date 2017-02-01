@@ -181,3 +181,7 @@ C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.AddActiveFieldToInvitations.resources
 C:\Users\feh\Documents\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.CascadingDeletion.resources
 C:\Users\ash\documents\visual studio 2015\Projects\EventManager\EventManager\obj\Debug\EventManager.Migrations.CascadingDeletion.resources
+C:\Users\feh\Documents\Projects\EventManager\EventManager\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\feh\Documents\Projects\EventManager\EventManager\bin\SendGrid.dll
+C:\Users\feh\Documents\Projects\EventManager\EventManager\bin\System.Net.Http.Formatting.dll
+C:\Users\feh\Documents\Projects\EventManager\EventManager\bin\System.Net.Http.Formatting.xml
