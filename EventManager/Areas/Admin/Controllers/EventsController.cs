@@ -24,22 +24,7 @@ namespace EventManager.Areas.Admin.Controllers
             return View(db.Events.OrderBy(events => events.Date).ToList());
         }
 
-        // GET: Events/Details/5
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
+        //Action for sending ajax request to get the upcoming or previous event.
         public ActionResult Filter(string type)
         {
             IEnumerable<Event> events;
@@ -68,8 +53,6 @@ namespace EventManager.Areas.Admin.Controllers
         }
 
         // POST: Events/New
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult New([Bind(Include = "ID,Name,Date,Time")] Event @event)
@@ -77,37 +60,6 @@ namespace EventManager.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Events.Add(@event);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(@event);
-        }
-
-        // GET: Events/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Date,Time")] Event @event)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

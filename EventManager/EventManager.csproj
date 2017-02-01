@@ -198,6 +198,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ErrorMessagesService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +207,11 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\ping-pong-logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -218,15 +219,13 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="fonts\fontawesome-webfont-.eot" />
-    <Content Include="fonts\fontawesome-webfont-v=3.2.1.eot" />
-    <Content Include="fonts\fontawesome-webfont-v=3.2.1.ttf" />
-    <Content Include="fonts\fontawesome-webfont-v=3.2.1.woff" />
     <Content Include="font\.DS_Store" />
     <Content Include="font\fontawesome-webfont-.eot" />
     <Content Include="font\fontawesome-webfont-v=3.2.1.eot" />
     <Content Include="font\fontawesome-webfont-v=3.2.1.ttf" />
     <Content Include="font\fontawesome-webfont-v=3.2.1.woff" />
+    <None Include="Properties\PublishProfiles\eventmanagementapp - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\eventmanagementapp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\classie.js" />
@@ -265,8 +264,6 @@
     <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Invitations\New.cshtml" />
     <Content Include="Areas\Admin\Views\Invitations\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Invitations\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Invitations\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Invitations\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Events\Filter.cshtml" />
     <Content Include="Views\Home\Upcoming.cshtml" />
