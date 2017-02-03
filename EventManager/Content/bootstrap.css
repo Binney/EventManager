@@ -52,7 +52,7 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Oswald', serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -163,7 +163,7 @@ input,
 select,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: 'Oswald', serif;
   font-size: 100%;
 }
 
@@ -322,7 +322,7 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
+  font-family: 'Oswald', serif;
   font-size: inherit;
   line-height: inherit;
 }
