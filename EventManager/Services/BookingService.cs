@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
@@ -35,6 +36,7 @@ namespace EventManager.Services
                 foreach (Invitation invitation in reactivatedInvitations)
                 {
                     invitation.Active = true;
+                    EmailService.CancellationEmail(invitation.Email, invitation.Name, booking.Event.Name).Wait();
                 }
             }
         }

@@ -134,8 +134,7 @@ namespace EventManager.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.Events.Find(id);
-            //            Booking booking = db.Bookings.First(b => b.EventId == id); 
+            Event @event = db.Events.Find(id); 
             BookingService.EnableInvitation(db, @event.Booking);
             db.Events.Remove(@event);
             db.SaveChanges();
