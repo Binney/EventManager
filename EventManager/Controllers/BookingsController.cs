@@ -1,44 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
 using EventManager.Models;
 using EventManager.Services;
-using WebGrease.Css.Extensions;
 
 namespace EventManager.Controllers
 {
     [InvitedUserOnlyFilter]
     public class BookingsController : Controller
     {
-        private EventManagerDbContext db = new EventManagerDbContext();
+        private readonly EventManagerDbContext db = new EventManagerDbContext();
+
         // GET: Bookings/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
+            if (!id.HasValue)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Booking booking = db.Bookings.Find(id);
+
+            var booking = db.Bookings.Find(id);
+
             if (booking == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(booking);
         }
 
         // GET: Bookings/Create
         public ActionResult New()
         {
-            var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
+            var events = db.GetUnbookedEventsInTheFuture();
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
             return View();
         }
@@ -50,36 +41,31 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
-            var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
+            var events = db.GetUnbookedEventsInTheFuture();
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
 
             //Adds error messages to the booking model if there are any.
-            ErrorMessagesService.AddingErrorMessages(ModelState, db, booking);
+            ErrorMessagesService.CheckForPreviousBookings(ModelState, db, booking);
 
-            if (ModelState.IsValid)
-            {
-                BookingService.DisableInvitation(db, booking);
-                db.Bookings.Add(booking);
-                db.SaveChanges();
-                return RedirectToAction("Details", new {id = booking.EventId});
-            }
-            return View(booking);
+            if (!ModelState.IsValid)
+                return View(booking);
+
+            db.DisableInvitations(booking);
+            
+            return RedirectToAction("Details", new {id = booking.EventId});
         }
 
         // GET: Bookings/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Booking booking = db.Bookings.Find(id);
             
+            var booking = db.Bookings.Find(id);
             
             if (BookingService.IsBookedIn(booking))
-            {
                 return View(booking);
-            }
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -89,14 +75,13 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Booking booking = db.Bookings.Find(id);
+            var booking = db.Bookings.Find(id);
 
-            if (BookingService.IsBookedIn(booking))
-            {
-                BookingService.EnableInvitation(db, booking);
-                db.Bookings.Remove(booking);
-                db.SaveChanges();
-            }
+            if (booking == null)
+                return HttpNotFound();
+
+            BookingService.DeleteConfirmedBooking(db, booking);
+            
             return RedirectToAction("Upcoming", "Home");
         }
 

@@ -10,7 +10,7 @@ namespace EventManager.Services
 {
     public static class ErrorMessagesService
     {
-        public static void AddingErrorMessages(ModelStateDictionary modelState, EventManagerDbContext db, Booking booking)
+        public static void CheckForPreviousBookings(ModelStateDictionary modelState, EventManagerDbContext db, Booking booking)
         {
             if (BookingService.CheckForPreviousBookings(db, booking.Guest1))
             {

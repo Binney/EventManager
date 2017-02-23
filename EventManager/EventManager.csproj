@@ -199,6 +199,7 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ErrorMessagesService.cs" />
+    <Compile Include="Services\EventsService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
