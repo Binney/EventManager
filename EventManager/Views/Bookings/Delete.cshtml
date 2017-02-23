@@ -40,7 +40,7 @@
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-actions no-color">
+                <div class="form-group">
                     <p>Are you sure you want to cancel this booking?</p>
                     <input type="submit" value="Yes" class="btn btn-danger"/> |
                     @Html.ActionLink("No", "Details", new {id = Model.EventId }, new { @class = "btn btn-success" })
@@ -51,4 +51,8 @@
     <div class="col-lg-4">
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

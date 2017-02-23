@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
-using EventManager.Models;
 using EventManager.Services;
 
 namespace EventManager.Areas.Admin.Controllers
@@ -86,10 +83,13 @@ namespace EventManager.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.Events.Find(id); 
+            Event @event = db.Events.Find(id);
+
+            if (@event == null)
+                return RedirectToAction("Index");
+
             BookingService.EnableInvitation(db, @event.Booking);
-            db.Events.Remove(@event);
-            db.SaveChanges();
+            EventsService.DeleteConfirmedEvent(db, @event);
             return RedirectToAction("Index");
         }
 
