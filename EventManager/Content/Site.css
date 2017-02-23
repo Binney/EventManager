@@ -44,3 +44,15 @@ textarea {
 li {
     list-style-type: none;
 }
+
+.fixed-logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.site-logo {
+    width: 100px;
+    height: 100px;
+    filter: invert(40%)
+}

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using EventManager.Areas.Admin.Models;
@@ -49,24 +50,11 @@ namespace EventManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
         {
-//            var bookings = db.Bookings.Where(m => m.EventId == booking.EventId);
             var events = db.Events.Where(m => m.Booking.EventId != m.EventId && m.Date >= DateTime.Now);
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
 
-
-            //Look to refactor into own method.
-            if (BookingService.CheckForPreviousBookings(db, booking.Guest1))
-            {
-                ModelState.AddModelError("Guest1", "This email is already booking into another event.");
-            }
-            if (BookingService.CheckForPreviousBookings(db, booking.Guest2))
-            {
-                ModelState.AddModelError("Guest2", "This email is already booking into another event.");
-            }
-            if (BookingService.CheckForPreviousBookings(db, booking.Guest3))
-            {
-                ModelState.AddModelError("Guest3", "This email is already booking into another event.");                  
-            }
+            //Adds error messages to the booking model if there are any.
+            ErrorMessagesService.AddingErrorMessages(ModelState, db, booking);
 
             if (ModelState.IsValid)
             {

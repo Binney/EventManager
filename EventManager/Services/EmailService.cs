@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Net;
@@ -16,7 +17,7 @@ namespace EventManager.Services
     {
         public static async Task InvitationEmail(string userEmail, string userName, string invitationCode)
         {
-            string apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY", EnvironmentVariableTarget.User);
+            string apiKey = ConfigurationManager.AppSettings["SENDGRID_API_KEY"];
             dynamic sg = new SendGridAPIClient(apiKey);
 
             Email from = new Email("softwire.events@softwire.com");
@@ -34,7 +35,7 @@ namespace EventManager.Services
 
         public static async Task CancellationEmail(string userEmail, string userName, string eventName)
         {
-            string apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY", EnvironmentVariableTarget.User);
+            string apiKey = ConfigurationManager.AppSettings["SENDGRID_API_KEY"];
             dynamic sg = new SendGridAPIClient(apiKey);
 
             Email from = new Email("softwire.events@softwire.com");
