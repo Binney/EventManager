@@ -17,14 +17,7 @@
 <nav class="menu" id="theMenu">
 
     <div class="menu-wrap">
-        @if (UserService.IsAdmin())
-        {
-            <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Admin")</h1>
-            <i class="icon-remove menu-close"></i>
-            @Html.ActionLink("Events", "Index", "Events", new { Area = "Admin" }, null)
-            @Html.ActionLink("Invitations", "Index", "Invitations")
-        }
-        else if (UserService.IsInvitedUser())
+        @if (UserService.IsInvitedUser())
         {
             <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Home", new {Area = ""}, null)</h1>
             <i class="icon-remove menu-close"></i>
