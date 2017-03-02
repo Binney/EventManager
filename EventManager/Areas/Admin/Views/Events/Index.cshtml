@@ -4,70 +4,70 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2 class="centered">Events</h2>
+<h3 class="centered">EVENTS</h3>
 
 
 <div>
-    <div class="col-md-5"></div>
-    <div class="btn-group btn-toggle col-md-2 toggler">
-        <button class="btn btn-xs btn-primary active" value="upcoming">Upcoming</button>
-        <button class="btn btn-xs btn-default" value="previous">Previous</button>
-    </div>
-    <div class="col-md-5"></div>
-  
+   <div class="col-md-5"></div>
+   <div class="btn-group btn-toggle col-md-2 toggler">
+      <button class="btn btn-primary active" value="upcoming">Upcoming</button>
+      <button class="btn btn-default" value="previous">Previous</button>
+   </div>
+   <div class="col-md-5"></div>
+
 </div>
 
 
 
 <div id="events">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Time)
-            </th>
-            <th>
-                Guests
-            </th>
-            <th></th>
-        </tr>
+   <table class="table">
+      <tr>
+         <th>
+            <p>@Html.DisplayNameFor(model => model.Name)</p>
+         </th>
+         <th>
+            <p>@Html.DisplayNameFor(model => model.Date)</p>
+         </th>
+         <th>
+            <p>@Html.DisplayNameFor(model => model.Time)</p>
+         </th>
+         <th>
+            <p>Guests</p>
+         </th>
+         <th></th>
+      </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Time)
-                </td>
-                <td>
-                    @if (ViewBag.BookedEvents.Contains(item))
-                    {
-                        @Html.DisplayFor(modelItem => item.Booking.Guest1)<br/>
-                        @Html.DisplayFor(modelItem => item.Booking.Guest2)<br/>
-                        @Html.DisplayFor(modelItem => item.Booking.Guest3)<br/>
-                    }
-                    else
-                    {
-                        <p>Unbooked</p>
-                    }
-                </td>
-                <td>
-                    @Html.ActionLink("Delete Event", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
-        }
-    </table>
-    
+      @foreach (var item in Model)
+      {
+         <tr>
+            <td>
+               <p>@Html.DisplayFor(modelItem => item.Name)</p>
+            </td>
+            <td>
+               <p>@Html.DisplayFor(modelItem => item.Date)</p>
+            </td>
+            <td>
+               <p>@Html.DisplayFor(modelItem => item.Time)</p>
+            </td>
+            <td>
+               @if (ViewBag.BookedEvents.Contains(item))
+               {
+                  @Html.DisplayFor(modelItem => item.Booking.Guest1)<br />
+                        @Html.DisplayFor(modelItem => item.Booking.Guest2)<br />
+                        @Html.DisplayFor(modelItem => item.Booking.Guest3)<br />
+               }
+               else
+               {
+                  <p>Unbooked</p>
+               }
+            </td>
+            <td>
+               @Html.ActionLink("Delete Event", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
+            </td>
+         </tr>
+      }
+   </table>
+
 </div>
 
-<div class="centered">@Html.ActionLink("Create New", "New", null, new { @class = "btn btn-default" })</div>
+<div class="centered">@Html.ActionLink("CREATE NEW", "New", null, new { @class = "btn btn-warning" })</div>

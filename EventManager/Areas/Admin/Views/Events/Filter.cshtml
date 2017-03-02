@@ -1,52 +1,51 @@
 ﻿@model System.Collections.Generic.IEnumerable<EventManager.Areas.Admin.Models.Event>
 
-   <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th>
-            Guests
-        </th>
-        <th></th>
-    </tr>
+<table class="table">
+   <tr>
+      <th>
+         <p>@Html.DisplayNameFor(model => model.Name)</p>
+      </th>
+      <th>
+         <p>@Html.DisplayNameFor(model => model.Date)</p>
+      </th>
+      <th>
+         <p>@Html.DisplayNameFor(model => model.Time)</p>
+      </th>
+      <th>
+         <p>Guests</p>
+      </th>
+      <th></th>
+   </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @if (ViewBag.BookedEvents.Contains(item))
+   @foreach (var item in Model)
+   {
+      <tr>
+         <td>
+            <p>@Html.DisplayFor(modelItem => item.Name)</p>
+         </td>
+         <td>
+            <p>@Html.DisplayFor(modelItem => item.Date)</p>
+         </td>
+         <td>
+            <p>@Html.DisplayFor(modelItem => item.Time)</p>
+         </td>
+         <td>
+            @if (ViewBag.BookedEvents.Contains(item))
                 {
-                    @Html.DisplayFor(modelItem => item.Booking.Guest1)<br />
-                        @Html.DisplayFor(modelItem => item.Booking.Guest2)<br />
-                        @Html.DisplayFor(modelItem => item.Booking.Guest3)<br />
-                }
-                else
-                {
-                    <p>Unbooked</p>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Delete Event", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
+               <p>@Html.DisplayFor(modelItem => item.Booking.Guest1)</p><br />
+               <p>@Html.DisplayFor(modelItem => item.Booking.Guest2)</p><br />
+               <p>@Html.DisplayFor(modelItem => item.Booking.Guest3)</p><br />
+            }
+            else
+            {
+               <p>Unbooked</p>
+            }
+         </td>
+         <td>
+            @Html.ActionLink("Delete Event", "Delete", new { id = item.EventId }, new { @class = "btn btn-danger" })
+         </td>
+      </tr>
+   }
 
 </table>
 
-    

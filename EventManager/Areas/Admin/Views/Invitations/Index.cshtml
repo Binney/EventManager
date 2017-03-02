@@ -4,21 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="centered">Invitations</h2>
+<h3 class="centered">INVITATIONS</h3>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+           <p>@Html.DisplayNameFor(model => model.Name)</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+           <p>@Html.DisplayNameFor(model => model.Email)</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvitationCode)
+           <p>@Html.DisplayNameFor(model => model.InvitationCode)</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Active)
+           <p>@Html.DisplayNameFor(model => model.Active)</p>
         </th>
         <th></th>
     </tr>
@@ -45,5 +45,5 @@
 
 </table>
 <div class="centered">
-    @Html.ActionLink("New Invitation", "New", null, new {@class = "btn btn-default"})
+    @Html.ActionLink("New Invitation", "New", null, new {@class = "btn btn-warning"})
 </div>
