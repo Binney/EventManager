@@ -41,24 +41,24 @@
       {
          <tr>
             <td>
-               <p>@Html.DisplayFor(modelItem => item.Name)</p>
+               @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-               <p>@Html.DisplayFor(modelItem => item.Date)</p>
+               @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-               <p>@Html.DisplayFor(modelItem => item.Time)</p>
+               @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
                @if (ViewBag.BookedEvents.Contains(item))
                {
-                  @Html.DisplayFor(modelItem => item.Booking.Guest1)<br />
+                  @Html.DisplayFor(modelItem => item.Booking.PrimaryGuest)<br />
+                        @Html.DisplayFor(modelItem => item.Booking.Guest1)<br />
                         @Html.DisplayFor(modelItem => item.Booking.Guest2)<br />
-                        @Html.DisplayFor(modelItem => item.Booking.Guest3)<br />
                }
                else
                {
-                  <p>Unbooked</p>
+                   <span>Unbooked</span>
                }
             </td>
             <td>
@@ -70,4 +70,4 @@
 
 </div>
 
-<div class="centered">@Html.ActionLink("CREATE NEW", "New", null, new { @class = "btn btn-warning" })</div>
+<div class="centered">@Html.ActionLink("NEW EVENT", "New", null, new { @class = "btn btn-warning" })</div>

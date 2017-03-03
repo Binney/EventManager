@@ -38,12 +38,12 @@
             @Html.DisplayFor(modelItem => item.Active)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Delete Invitation", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
 
 </table>
 <div class="centered">
-    @Html.ActionLink("New Invitation", "New", null, new {@class = "btn btn-warning"})
+    @Html.ActionLink("NEW INVITATION", "New", null, new {@class = "btn btn-warning"})
 </div>

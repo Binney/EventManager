@@ -31,7 +31,8 @@ namespace EventManager.Controllers
         {
             var events = db.GetUnbookedEventsInTheFuture();
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
-            return View();
+            var booking = new Booking() { PrimaryGuest = Request.Cookies["UserEmail"]?.Value };
+            return View(booking);
         }
 
         // POST: Bookings/Create
@@ -39,18 +40,17 @@ namespace EventManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult New([Bind(Include = "EventId,Guest1,Guest2,Guest3")] Booking booking)
+        public ActionResult New([Bind(Include = "EventId,PrimaryGuest,Guest1,Guest2")] Booking booking)
         {
             var events = db.GetUnbookedEventsInTheFuture();
             ViewBag.EventId = new SelectList(events, "EventId", "Name");
-
             //Adds error messages to the booking model if there are any.
             ErrorMessagesService.CheckForPreviousBookings(ModelState, db, booking);
 
             if (!ModelState.IsValid)
                 return View(booking);
 
-            db.DisableInvitations(booking);
+            db.ConfirmBooking(booking);
             
             return RedirectToAction("Details", new {id = booking.EventId});
         }

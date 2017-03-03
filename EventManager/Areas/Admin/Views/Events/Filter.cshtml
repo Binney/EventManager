@@ -21,24 +21,24 @@
    {
       <tr>
          <td>
-            <p>@Html.DisplayFor(modelItem => item.Name)</p>
+            @Html.DisplayFor(modelItem => item.Name)
          </td>
          <td>
-            <p>@Html.DisplayFor(modelItem => item.Date)</p>
+            @Html.DisplayFor(modelItem => item.Date)
          </td>
          <td>
-            <p>@Html.DisplayFor(modelItem => item.Time)</p>
+            @Html.DisplayFor(modelItem => item.Time)
          </td>
          <td>
             @if (ViewBag.BookedEvents.Contains(item))
                 {
-               <p>@Html.DisplayFor(modelItem => item.Booking.Guest1)</p><br />
-               <p>@Html.DisplayFor(modelItem => item.Booking.Guest2)</p><br />
-               <p>@Html.DisplayFor(modelItem => item.Booking.Guest3)</p><br />
+               @Html.DisplayFor(modelItem => item.Booking.PrimaryGuest)<br />
+               @Html.DisplayFor(modelItem => item.Booking.Guest1)<br />
+               @Html.DisplayFor(modelItem => item.Booking.Guest2)<br />
             }
             else
             {
-               <p>Unbooked</p>
+               Unbooked
             }
          </td>
          <td>

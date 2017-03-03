@@ -15,7 +15,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group centered">
-            @Html.LabelFor(model => model.EventId, "Event", htmlAttributes: new { @class = "control-label col-md-4" })
+            <p>@Html.LabelFor(model => model.EventId, "Event", htmlAttributes: new { @class = "control-label col-md-4" })</p>
             <div class="col-md-8">
                 @Html.DropDownList("EventId", null, htmlAttributes: new { @class = "form-control centered" })
                 @Html.ValidationMessageFor(model => model.EventId, "", new { @class = "text-danger" })
@@ -23,15 +23,22 @@
         </div>
 
         <div class="form-group centered">
-            @Html.LabelFor(model => model.Guest1, htmlAttributes: new { @class = "control-label col-md-4" })
+            <p>@Html.LabelFor(model => model.PrimaryGuest, htmlAttributes: new { @class = "control-label col-md-4" })</p>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.PrimaryGuest, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+        </div>
+        
+        <div class="form-group centered">
+            <p>@Html.LabelFor(model => model.Guest1, htmlAttributes: new { @class = "control-label col-md-4" })</p>
             <div class="col-md-8">
                 @Html.EditorFor(model => model.Guest1, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Guest1, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group centered">
-            @Html.LabelFor(model => model.Guest2, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="form-group">
+            <p>@Html.LabelFor(model => model.Guest2, htmlAttributes: new { @class = "control-label col-md-4" })</p>
             <div class="col-md-8">
                 @Html.EditorFor(model => model.Guest2, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Guest2, "", new { @class = "text-danger" })
@@ -39,16 +46,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Guest3, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Guest3, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Guest3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-12">
-                <input type="submit" value="Book" class="btn btn-default" />
+                <input type="submit" value="BOOK" class="btn btn-warning" />
             </div>
         </div>
     </div>

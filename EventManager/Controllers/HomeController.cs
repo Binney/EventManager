@@ -25,9 +25,9 @@ namespace EventManager.Controllers
 
             string email = Request.Cookies["UserEmail"]?.Value;
 
-            if (db.Bookings.Any(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email))
+            if (db.Bookings.Any(b => b.PrimaryGuest == email || b.Guest1 == email || b.Guest2 == email))
             {
-                Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);
+                Booking booking = db.Bookings.First(b => b.PrimaryGuest == email || b.Guest1 == email || b.Guest2 == email);
                 return RedirectToAction("Details", "Bookings", new { id = booking.EventId });
             }
 
@@ -56,6 +56,11 @@ namespace EventManager.Controllers
             return RedirectToAction("Upcoming");
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         public bool InvitationIsValid(string userEmail, string invitationCode)
         {
             var invitations = db.Invitations.Where(i => i.Email == userEmail);
@@ -66,7 +71,7 @@ namespace EventManager.Controllers
         public ActionResult Upcoming()
         {
             var userEmail = Request.Cookies["UserEmail"]?.Value;
-            ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.Guest1 == userEmail || b.Guest2 == userEmail || b.Guest3 == userEmail));
+            ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.PrimaryGuest == userEmail || b.Guest1 == userEmail || b.Guest2 == userEmail));
             ViewBag.UnbookedEvents = db.Events.Where(e => e.Booking == null).ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now).OrderBy(e => e.Date));
         }

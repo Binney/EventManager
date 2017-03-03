@@ -35,6 +35,10 @@ h1, h2, h3 {
     text-align: center;
 }
 
+.jumbotron {
+    background-color: grey;
+}
+
 /* Links */
 a {
     color: white;
