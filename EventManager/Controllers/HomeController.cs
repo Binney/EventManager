@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
 using EventManager.Models;
-using EventManager.Services;
 
 namespace EventManager.Controllers
 {
@@ -74,6 +69,17 @@ namespace EventManager.Controllers
             ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.PrimaryGuest == userEmail || b.Guest1 == userEmail || b.Guest2 == userEmail));
             ViewBag.UnbookedEvents = db.Events.Where(e => e.Booking == null).ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now).OrderBy(e => e.Date));
+        }
+
+        [InvitedUserOnlyFilter]
+        public ActionResult Delete()
+        {
+            HttpCookie currentAdminCookie = HttpContext.Request.Cookies["UserEmail"];
+            HttpContext.Response.Cookies.Remove("Auth");
+            currentAdminCookie.Expires = DateTime.Now.AddDays(-10);
+            currentAdminCookie.Value = null;
+            HttpContext.Response.SetCookie(currentAdminCookie);
+            return Index();
         }
 
 

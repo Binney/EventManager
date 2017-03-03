@@ -10,7 +10,7 @@ namespace EventManager.Services
     {
         public static bool IsAdmin()
         {
-            return HttpContext.Current.Request.Cookies["Auth"]?.Value == ConfigurationManager.AppSettings["AdminPassword"];
+            return HttpContext.Current.Request.Cookies["Auth"]?.Value == ConfigurationManager.AppSettings["AdminUsername"];
         }
 
         public static bool IsInvitedUser()
