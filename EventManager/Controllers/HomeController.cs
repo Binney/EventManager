@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EventManager.Areas.Admin.Models;
 using EventManager.DbContexts;
 using EventManager.Filters;
 using EventManager.Models;
-using EventManager.Services;
 
 namespace EventManager.Controllers
 {
@@ -25,9 +20,9 @@ namespace EventManager.Controllers
 
             string email = Request.Cookies["UserEmail"]?.Value;
 
-            if (db.Bookings.Any(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email))
+            if (db.Bookings.Any(b => b.PrimaryGuest == email || b.Guest1 == email || b.Guest2 == email))
             {
-                Booking booking = db.Bookings.First(b => b.Guest1 == email || b.Guest2 == email || b.Guest3 == email);
+                Booking booking = db.Bookings.First(b => b.PrimaryGuest == email || b.Guest1 == email || b.Guest2 == email);
                 return RedirectToAction("Details", "Bookings", new { id = booking.EventId });
             }
 
@@ -56,6 +51,11 @@ namespace EventManager.Controllers
             return RedirectToAction("Upcoming");
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         public bool InvitationIsValid(string userEmail, string invitationCode)
         {
             var invitations = db.Invitations.Where(i => i.Email == userEmail);
@@ -66,9 +66,20 @@ namespace EventManager.Controllers
         public ActionResult Upcoming()
         {
             var userEmail = Request.Cookies["UserEmail"]?.Value;
-            ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.Guest1 == userEmail || b.Guest2 == userEmail || b.Guest3 == userEmail));
+            ViewBag.NotAlreadyBookedIn = !(db.Bookings.Any(b => b.PrimaryGuest == userEmail || b.Guest1 == userEmail || b.Guest2 == userEmail));
             ViewBag.UnbookedEvents = db.Events.Where(e => e.Booking == null).ToList();
             return View(db.Events.Where(e => e.Date > DateTime.Now).OrderBy(e => e.Date));
+        }
+
+        [InvitedUserOnlyFilter]
+        public ActionResult Delete()
+        {
+            HttpCookie currentAdminCookie = HttpContext.Request.Cookies["UserEmail"];
+            HttpContext.Response.Cookies.Remove("Auth");
+            currentAdminCookie.Expires = DateTime.Now.AddDays(-10);
+            currentAdminCookie.Value = null;
+            HttpContext.Response.SetCookie(currentAdminCookie);
+            return Index();
         }
 
 

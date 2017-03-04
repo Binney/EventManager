@@ -4,34 +4,34 @@
     ViewBag.Title = "Delete";
 }
 
-<h2 class="centered">Cancel @Html.DisplayFor(model => model.Event.Name) </h2>
+<h2 class="centered">@Html.DisplayFor(model => model.Event.Name) </h2>
 <div>
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Guest1)
+                <p>@Html.DisplayNameFor(model => model.PrimaryGuest)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Guest1)
+                <p>@Html.DisplayFor(model => model.PrimaryGuest)</p>
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Guest2)
+                <p>@Html.DisplayNameFor(model => model.Guest1)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Guest2)
+                <p>@Html.DisplayFor(model => model.Guest1)</p>
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Guest3)
+                <p>@Html.DisplayNameFor(model => model.Guest2)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Guest3)
+                <p>@Html.DisplayFor(model => model.Guest2)</p>
             </dd>
         </dl>
 
@@ -42,8 +42,8 @@
 
                 <div class="form-group">
                     <p>Are you sure you want to cancel this booking?</p>
-                    <input type="submit" value="Yes" class="btn btn-danger"/> |
-                    @Html.ActionLink("No", "Details", new {id = Model.EventId }, new { @class = "btn btn-success" })
+                    <input type="submit" value="Yes" class="btn btn-warning"/> |
+                    @Html.ActionLink("No", "Details", new {id = Model.EventId }, new { @class = "btn btn-danger" })
                 </div>
             }
         </div>

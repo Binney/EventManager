@@ -1,0 +1,22 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Softwire Events";
+}
+<div class="centered">
+    
+    <h3>ABOUT</h3>
+    <div class="col-md-4"></div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="form-horizontal col-md-4 ">
+            <p>Welcome to Happnin!</p>
+            <p>Developed by Asif and Felix for Softwire</p>
+        </div>
+    }
+    <div class="col-md-4"></div>
+</div>

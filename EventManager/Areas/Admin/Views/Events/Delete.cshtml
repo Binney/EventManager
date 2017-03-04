@@ -4,34 +4,34 @@
     ViewBag.Title = "Delete";
 }
 
-<h2 class="centered">Delete Event</h2>
+<h2 class="centered">DELETE EVENT</h2>
 <div>
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
         <hr/>
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                <p>@Html.DisplayNameFor(model => model.Name)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Name)
+                <p>@Html.DisplayFor(model => model.Name)</p>
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Date)
+                <p>@Html.DisplayNameFor(model => model.Date)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Date)
+                <p>@Html.DisplayFor(model => model.Date)</p>
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Time)
+                <p>@Html.DisplayNameFor(model => model.Time)</p>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Time)
+                <p>@Html.DisplayFor(model => model.Time)</p>
             </dd>
 
         </dl>
@@ -42,8 +42,8 @@
 
                 <div class="form-actions no-color">
                     <p>Are you sure you want to cancel this event?</p>
-                    <input type="submit" value="Yes" class="btn btn-danger"/> |
-                    @Html.ActionLink("No", "Index", null, new { @class = "btn btn-success" })
+                    <input type="submit" value="Yes" class="btn btn-warning"/> |
+                    @Html.ActionLink("No", "Index", null, new { @class = "btn btn-danger" })
                 </div>
             }
         </div>

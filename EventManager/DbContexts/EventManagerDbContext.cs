@@ -19,7 +19,7 @@ namespace EventManager.DbContexts
             modelBuilder.Entity<Booking>()
                         .HasRequired(t => t.Event)
                         .WithOptional(e => e.Booking)
-                        .WillCascadeOnDelete();
+                        .WillCascadeOnDelete(true);
 
             base.OnModelCreating(modelBuilder);
         }

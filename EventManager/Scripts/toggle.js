@@ -12,9 +12,9 @@
 $(".btn-toggle").click(function () {
     $(this).find(".btn").toggleClass("active");
 
-    console.log($(this).find(".btn-primary"));
-    if ($(this).find(".btn-primary").size() > 0) {
-        $(this).find(".btn").toggleClass("btn-primary");
+  
+    if ($(this).find(".btn-warning").size() > 0) {
+        $(this).find(".btn").toggleClass("btn-warning");
     }
 
     $(this).find(".btn").toggleClass("btn-default");

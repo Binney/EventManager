@@ -12,6 +12,10 @@ namespace EventManager.Services
     {
         public static void CheckForPreviousBookings(ModelStateDictionary modelState, EventManagerDbContext db, Booking booking)
         {
+            if (BookingService.CheckForPreviousBookings(db, booking.PrimaryGuest))
+            {
+                modelState.AddModelError("PrimaryGuest", "This email is already booking into another event.");
+            }
             if (BookingService.CheckForPreviousBookings(db, booking.Guest1))
             {
                 modelState.AddModelError("Guest1", "This email is already booking into another event.");
@@ -19,10 +23,6 @@ namespace EventManager.Services
             if (BookingService.CheckForPreviousBookings(db, booking.Guest2))
             {
                 modelState.AddModelError("Guest2", "This email is already booking into another event.");
-            }
-            if (BookingService.CheckForPreviousBookings(db, booking.Guest3))
-            {
-                modelState.AddModelError("Guest3", "This email is already booking into another event.");
             }
         }
     }

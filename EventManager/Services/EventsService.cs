@@ -17,13 +17,13 @@ namespace EventManager.Services
         {
             var eventInvitations = BookingService.InvitationsToReactivate(db, deleteEvent.Booking);
 
-            if (!eventInvitations.Any())
-                return;
-
-            foreach (var invitation in eventInvitations)
-            {
-                EmailService.CancellationEmail(invitation.Email, invitation.Name, deleteEvent.Name).Wait();
+            if (eventInvitations != null) { 
+                foreach (var invitation in eventInvitations)
+                {
+                    EmailService.CancellationEmail(invitation.Email, invitation.Name, deleteEvent.Name).Wait();
+                }
             }
+
             db.Events.Remove(deleteEvent);
             db.SaveChanges();
         }

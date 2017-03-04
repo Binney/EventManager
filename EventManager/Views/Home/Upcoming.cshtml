@@ -6,18 +6,18 @@
         ViewBag.Title = "Upcoming";
     }
 
-    <h2 class="centered">Upcoming Events</h2>
+    <h3 class="centered">UPCOMING EVENTS</h3>
 
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <p>@Html.DisplayNameFor(model => model.Name)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                <p>@Html.DisplayNameFor(model => model.Date)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Time)
+                <p>@Html.DisplayNameFor(model => model.Time)</p>
             </th>
             <th></th>
         </tr>
@@ -26,18 +26,18 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    <p>@Html.DisplayFor(modelItem => item.Name)</p>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    <p>@Html.DisplayFor(modelItem => item.Date)</p>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Time)
+                    <p>@Html.DisplayFor(modelItem => item.Time)</p>
                 </td>
                 <td>
                     @if (ViewBag.UnbookedEvents.Contains(item) && ViewBag.NotAlreadyBookedIn)
                     {
-                        @Html.ActionLink("Book", "New", "Bookings", null, new { @class = "btn btn-default"} )
+                        @Html.ActionLink("Book", "New", "Bookings", null, new { @class = "btn btn-warning"} )
                     }
                 </td>
             </tr>

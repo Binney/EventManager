@@ -1,0 +1,51 @@
+﻿@using EventManager.Services
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#theMenu">
+
+    <div class="fixed-logo"><img class="site-logo" src="~/images/ping-pong-logo.png"></div>
+
+    <!-- Menu -->
+    <nav class="menu" id="theMenu">
+
+        <div class="menu-wrap">
+            @if (UserService.IsAdmin())
+            {
+                <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Admin")</h1>
+                <i class="icon-remove menu-close"></i>
+                @Html.ActionLink("Events", "Index", "Events", new { Area = "Admin" }, null)
+                @Html.ActionLink("Invitations", "Index", "Invitations")
+                @Html.ActionLink("Log Out", "Delete", "Admin")
+            }
+            else
+            {
+                <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Home", new { Area = "" }, null)</h1>
+                <i class="icon-remove menu-close"></i>
+                @Html.ActionLink("Admin Login", "Index", "Admin")
+                @Html.ActionLink("User Login", "Index", "Home", new { Area = "" }, null)
+            }
+        </div>
+
+        <!-- Menu button -->
+        <div id="menuToggle">
+            <i class="icon-reorder"></i>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
