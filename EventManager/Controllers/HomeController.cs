@@ -51,7 +51,22 @@ namespace EventManager.Controllers
             return RedirectToAction("Upcoming");
         }
 
-        public ActionResult About()
+        public ActionResult Manifesto()
+        {
+            return View();
+        }
+
+        public ActionResult Products()
+        {
+            return View();
+        }
+
+        public ActionResult Careers()
+        {
+            return View();
+        }
+
+        public ActionResult LogIn()
         {
             return View();
         }

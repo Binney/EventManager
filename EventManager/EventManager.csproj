@@ -205,14 +205,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\ping-pong-logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -271,10 +269,16 @@
     <Content Include="Views\Bookings\New.cshtml" />
     <Content Include="Views\Bookings\Delete.cshtml" />
     <Content Include="Views\Bookings\Details.cshtml" />
+    <Content Include="Views\Home\Manifesto.cshtml" />
+    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\Careers.cshtml" />
+    <Content Include="Views\Home\Mini_login.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

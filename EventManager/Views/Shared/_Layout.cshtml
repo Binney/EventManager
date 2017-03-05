@@ -4,14 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Syzygy</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body data-spy="scroll" data-offset="0" data-target="#theMenu">
-
-<div class="fixed-logo"><img class="site-logo" src="~/images/ping-pong-logo.png"></div>
 
 <!-- Menu -->
 <nav class="menu" id="theMenu">
@@ -19,19 +17,20 @@
     <div class="menu-wrap">
         @if (UserService.IsInvitedUser())
         {
-            <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Home", new {Area = ""}, null)</h1>
+            <h1 class="logo">@Html.ActionLink("Syzygy", "Index", "Home", new {Area = ""}, null)</h1>
             <i class="icon-remove menu-close"></i>
-            @Html.ActionLink("Your Booking", "Index", "Home")
-            @Html.ActionLink("Upcoming Events", "Upcoming", "Home")
+            @Html.ActionLink("Booking", "Index", "Home")
             @Html.ActionLink("Log Out", "Delete", "Home")
         }
         else
         {
-            <h1 class="logo">@Html.ActionLink("HappnIn", "Index", "Home", new {Area = ""}, null)</h1>
+            <h1 class="logo">@Html.ActionLink("Syzygy", "Index", "Home", new {Area = ""}, null)</h1>
             <i class="icon-remove menu-close"></i>
-            @Html.ActionLink("User Login", "Index", "Home", new { Area = "" }, null)
-            @Html.ActionLink("About", "About", "Home", new {Area = ""}, null)
-        }
+			@Html.ActionLink("About", "Manifesto", "Home", new { Area = "" }, null)
+			@Html.ActionLink("Products", "Products", "Home", new { Area = "" }, null)
+			@Html.ActionLink("Careers", "Careers", "Home", new { Area = "" }, null)
+			@Html.Partial("Mini_login", "Home");
+		}
     </div>
 
     <!-- Menu button -->
@@ -39,11 +38,19 @@
     </div>
 </nav>
 
-
-
 <div class="container body-content">
     @RenderBody()
 </div>
+
+<footer class="footer">
+	<div class="container">
+		<p class="footer-text">@Html.ActionLink("SYZYGY SYSTEMS INC.", "Index", "Home", null, new { @class = "footer-syzygy" })</a>
+		| @Html.ActionLink("About", "Manifesto", "Home")
+		| @Html.ActionLink("Products", "Products", "Home")
+		| @Html.ActionLink("Careers", "Careers", "Home")
+		| @Html.ActionLink("Employee login", "Login", "Home")</p>
+	</div>
+</footer>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,23 @@
+﻿<h3>Log In</h3>
+<div class="mini-login"></div>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="mini-login-form">
+		@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+		<div class="form-group centered">
+			<input type="email" placeholder="Email" name="userEmail" class="form-control" />
+		</div>
+
+		<div class="form-group ">
+			<input type="text" placeholder="Invitation Code" name="invitationCode" class="form-control" />
+		</div>
+
+		<div class="form-group ">
+			<input type="submit" value="Login" class="btn btn-warning" />
+		</div>
+	</div>
+}
+
+

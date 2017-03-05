@@ -1,34 +1,64 @@
 /*
  * Author: Carlos Alvarez
  * URL: http://alvarez.is
+ * [With mods by Binney]
  *
  * Project Name: Minimal - Free Bootstrap 3 Theme
  * Version: 1.0
  * URL: http://blacktie.co
  */
 
+@font-face {
+font-family: "Ailerons";
+src: url("../font/Ailerons-Typeface.otf");
+}
+
+@font-face {
+font-family: "Gilroy";
+src: url("../font/Gilroy-Light.otf");
+}
+
+html {
+	height: 100%;
+}
+
 body {
+	min-height: 100%;
     color: white;
-    font-family: 'EB Garamond', serif;
     font-weight: 500;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
 
+.body-content {
+	min-height: 75vh;
+}
+
 
 /* Paragraph & Typographic */
+
 p {
+	font-family: Gilroy;
+	color: #e5e5e5;
     line-height: 28px;
     font-size: 20px;
 }
 
-h1, h2, h3 {
-
-    font-family: 'Oswald', sans-serif;
+h1, h2, h3, h4 {
+	font-family: Ailerons;
     color: white;
-    font-weight: 700;
     letter-spacing: 1px;
+}
+
+p::selection, h1::selection, h2::selection, h3::selection, h4::selection, .applications::selection {
+	background-color: #ff8200;
+	color: #000;
+}
+
+a::selection {
+	background-color: #ff8200;
+	color: #fff;
 }
 
 .centered {
@@ -36,35 +66,36 @@ h1, h2, h3 {
 }
 
 .jumbotron {
-    background-color: grey;
+	background-color: rgba(0,0,0,0.5);
+	background-image: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+	background-image: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+	background-image: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+	background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+}
+
+.syzygy-home {
+	margin: 0 -100px;
+	background-image: url("../images/home.jpg");
+	background-size: cover;
 }
 
 /* Links */
-a {
-    color: white;
+a, a:before, a:after {
+    color: #b2b2b2;
     word-wrap: break-word;
 
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    -ms-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
 }
 
 a:hover,
 a:focus {
-    color: #7b7b7b;
+    color: white;
     text-decoration: none;
     outline: 0;
-}
-
-a:before,
-a:after {
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
  hr {
@@ -113,7 +144,6 @@ a:after {
 	color: white;
 	font-size: 30px;
 	font-weight: 100;
-    font-family: 'EB Garamond', serif;
     font-style: oblique;
 }
 
@@ -182,7 +212,6 @@ a:after {
 }
 
 .menu h1.logo a {
-	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	font-weight: 700;
 	letter-spacing: 0.15em;
@@ -229,6 +258,11 @@ a:after {
 	font-size: 14px;
 	line-height: 40px;
 	margin: 25px 2px;
+}
+
+.menu h3 {
+	padding-left: 20px;
+	font-size: 100%;
 }
 
 .menu-close {
@@ -313,4 +347,102 @@ a:after {
 			transition: all .1s ease-in-out;
 }
 
+#menuToggle::before {
+	content: url(../images/mini_logo.png);
+	margin-left: -100px;
+/*	background-size: 100% 100%;*/
+}
 
+.icon-remove::before {
+	content: ">";
+}
+
+/* Syzygy-specific pages */
+.introduction {
+	padding: 100px 0;
+	font-size: 200%;
+	text-align: center;
+	text-shadow: 0 0 10px white;
+}
+
+.introduction a {
+	color: black;
+}
+
+.introduction a:hover {
+	color: white;
+}
+
+.mini-login-form {
+	padding: 0 20px;
+}
+
+.applications {
+	font-style: italic;
+}
+
+.footer-syzygy::before {
+	content: url(../images/mini_logo.png);
+}
+
+.manifesto {
+	text-align: center;
+	padding-top: 500px;
+	background-image: url("../images/eye.jpeg");
+	background-size:contain;
+	background-repeat:no-repeat;
+}
+
+.manifesto h2 {
+	font-size: 300%;
+}
+
+.manifesto p {
+	padding-bottom: 40px;
+}
+
+.products {
+	margin: 0 -130px;
+}
+
+.products h2 {
+	margin-left: 130px;
+}
+
+.products h3, .careers {
+	font-size: 300%;
+	text-align: center;
+	padding-top: 130px;
+	background-size: cover;
+}
+
+.careers {
+	background-image: url("../images/careers2.jpeg");
+}
+
+.products-andromeda {
+	background-image: url("../images/andromeda.jpg");
+}
+
+.products-cerberus {
+	background-image: url("../images/cerberus.jpeg");
+}
+
+.products-catalyst {
+	color: black;
+	background-image: url("../images/catalyst.jpeg");
+}
+
+.products-genetex {
+	color: black;
+	background-image: url("../images/genetex.jpeg");
+}
+
+.products p {
+	padding: 30px 130px 100px 130px;
+}
+
+.footer {
+	border-top: 1px solid white;
+	padding-top: 40px;
+}
