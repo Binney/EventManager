@@ -1,11 +1,14 @@
 ﻿@model EventManager.Models.Booking
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Book";
 }
 
-<h2 class="centered">Book an Event</h2>
+<h2 class="centered">Book</h2>
 
+<p>
+	Sessions are one hour in length. Please arrive 15min before your scheduled slot for a Syzygy HR Representative to take you through the induction. Leaving before your hour is up may invalidate your participation.
+</p>
 
 @using (Html.BeginForm()) 
 {
@@ -44,6 +47,16 @@
                 @Html.ValidationMessageFor(model => model.Guest2, "", new { @class = "text-danger" })
             </div>
         </div>
+
+		<p>
+			Syzygy Systems Inc. takes your safety and security very seriously. If you or any of your nominated participants have any issues with:
+			<ul>
+				<li>DARKNESS</li>
+				<li>ENCLOSED SPACES</li>
+				<li>STROBE LIGHTING</li>
+			</ul>
+			please make yourself known to Syzygy staff by emailing safety-first@@syzygy.online.
+		</p>
 
         <div class="form-group">
             <div class="col-md-12">
