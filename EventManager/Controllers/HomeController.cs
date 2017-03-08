@@ -66,6 +66,11 @@ namespace EventManager.Controllers
             return View();
         }
 
+        public ActionResult Sightings()
+        {
+            return View();
+        }
+
         public ActionResult LogIn()
         {
             return View();
