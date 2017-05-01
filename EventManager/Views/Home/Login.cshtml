@@ -3,27 +3,16 @@
     ViewBag.Title = "Log In";
 }
 
-<h2>Employee login</h2>
+<h2>Apply</h2>
 
-<div class="col-md-4"></div>
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-{
-	@Html.AntiForgeryToken()
+<div>
+	<p>Thank you for your interest in the Syzygy Systems Asset Retrieval Programme.</p>
+	<p>Unfortunately, applications are now closed.</p>
+	<p>We at Syzygy express our profound gratitude to those who participated so efficiently and discreetly. You have taken one step, but Science has taken great strides as a result of your work.</p>
+	<p>Until next time...</p>
 
-	<div class="form-horizontal col-md-4 ">
-		@Html.ValidationSummary(false, "", new { @class = "text-danger" })
-		<div class="form-group centered">
-			<input type="email" placeholder="Email" name="userEmail" class="form-control" />
-		</div>
+	<audio controls>
+		<source src="~/sounds/6.wav" type="audio/wav" />
+	</audio>
 
-		<div class="form-group ">
-			<input type="text" placeholder="Invitation Code" name="invitationCode" class="form-control" />
-		</div>
-
-		<div class="form-group ">
-			<input type="submit" value="Login" class="btn btn-warning" />
-		</div>
-	</div>
-}
-
-
+</div>
