@@ -442,6 +442,10 @@ a:focus {
 	background-image: url("../images/genetex.jpeg");
 }
 
+.products-eatme {
+	background-image: url("../images/eatme.jpeg");
+}
+
 .products p {
 	padding: 30px 130px 100px 130px;
 }
