@@ -208,10 +208,18 @@
     <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="logo.ico" />
+    <Content Include="images\andromeda.jpg" />
+    <Content Include="images\careers.jpeg" />
+    <Content Include="images\catalyst.jpeg" />
+    <Content Include="images\cerberus.jpeg" />
+    <Content Include="images\chart.png" />
+    <Content Include="images\eatme.jpeg" />
+    <Content Include="images\eye.jpeg" />
+    <Content Include="images\genetex.jpeg" />
+    <Content Include="images\home.jpg" />
+    <Content Include="images\mini_logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -220,12 +228,16 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="font\.DS_Store" />
-    <Content Include="font\fontawesome-webfont-.eot" />
-    <Content Include="font\fontawesome-webfont-v=3.2.1.eot" />
-    <Content Include="font\fontawesome-webfont-v=3.2.1.ttf" />
-    <Content Include="font\fontawesome-webfont-v=3.2.1.woff" />
+    <Content Include="font\Gilroy-Light.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="font\Ailerons-Typeface.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\eventmanagementapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\eventmanagementapp - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\SyzygyOnline - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\SyzygyOnline - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\classie.js" />
@@ -273,14 +285,12 @@
     <Content Include="Views\Home\Manifesto.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Home\Careers.cshtml" />
-    <Content Include="Views\Home\Mini_login.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Sightings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="images\" />
     <Folder Include="sounds\" />
   </ItemGroup>
   <ItemGroup>

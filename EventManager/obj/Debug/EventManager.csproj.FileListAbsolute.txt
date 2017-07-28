@@ -380,3 +380,5 @@ C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\obj
 C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\obj\Debug\EventManager.csproj.GenerateResource.Cache
 C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\obj\Debug\EventManager.dll
 C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\obj\Debug\EventManager.pdb
+C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\bin\font\Gilroy-Light.otf
+C:\Users\SRB\Documents\Syzygy Systems Incorporated\EventManager\EventManager\bin\font\Ailerons-Typeface.otf
