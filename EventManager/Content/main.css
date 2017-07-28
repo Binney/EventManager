@@ -20,13 +20,13 @@ src: url("../font/Gilroy-Light.otf");
 
 html {
 	height: 100%;
-	background-color: black;
 }
 
 body {
 	min-height: 100%;
     color: white;
-    font-weight: 500;
+	background-color: black;
+	font-weight: 500;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
